@@ -13,7 +13,7 @@ What should be implemented?
 * **I want**
 * **So that** 
 
-Satisfaction conditions:
+Satisfaction Conditions:
 * **Given**
 * **When**
 * **Then**
