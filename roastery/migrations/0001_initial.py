@@ -12,9 +12,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Categorie',
+            name='Category',
             fields=[
-                ('category_id', models.AutoField(primary_key=True, serialize=False)),
+                ('category_id', models.BigAutoField(primary_key=True, serialize=False, verbose_name='ID')),
                 ('slug', models.SlugField(max_length=100, unique=True)),
                 ('main_category', models.CharField(max_length=100)),
                 ('sub_category', models.CharField(max_length=100)),
