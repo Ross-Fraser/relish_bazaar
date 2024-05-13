@@ -15,9 +15,8 @@ class Migration(migrations.Migration):
             name='Category',
             fields=[
                 ('category_id', models.BigAutoField(primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(max_length=100, unique=True)),
                 ('main_category', models.CharField(max_length=100)),
-                ('sub_category', models.CharField(max_length=100)),
+                ('slug', models.SlugField(max_length=100, unique=True)),
             ],
         ),
     ]
