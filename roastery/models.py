@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-GRIND_CHOICES =(
+GRIND_CHOICES = (
     (0, "Whole Bean"),
     (1, "Coarse"),
     (2, "Medium"),
@@ -10,14 +10,14 @@ GRIND_CHOICES =(
 )
 
 
-CONTINENT =(
+CONTINENT = (
     (0, "Africa"),
     (1, "Asia"),
     (2, "Americas"),
 )
 
 
-COUNTRY =(
+COUNTRY = (
     (0, "Ethiopia"),
     (1, "Kenya"),
     (2, "Uganda"),
@@ -30,7 +30,7 @@ COUNTRY =(
 )
 
 
-REGION =(
+REGION = (
     (0, "Sidamo"),
     (1, "Blue Mountain"),
     (2, "Agua Santa"),
@@ -79,7 +79,8 @@ class Coffee_Size(models.Model):
 
 class Coffee_Variant(models.Model):
     variant_id = models.AutoField(primary_key=True)
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="Coffee_Variants")
+    category_id = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                    related_name="Coffee_Variant")
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -93,11 +94,19 @@ class Coffee_Variant(models.Model):
 
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='Product')
-    coffee_variant = models.ForeignKey(Coffee_Variant, on_delete=models.CASCADE, related_name='Product')
-    origin_id = models.ForeignKey(Coffee_Origin, on_delete=models.CASCADE, related_name="Coffee_Variants")
-    grind_id = models.ForeignKey(Coffee_Grind, on_delete=models.CASCADE, related_name="Coffee_Variants")
-    size_id = models.ForeignKey(Coffee_Size, on_delete=models.CASCADE, related_name="Coffee_Variants")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 related_name='Product')
+    variant = models.ForeignKey(Coffee_Variant, on_delete=models.
+                                       CASCADE, null=True, related_name='Product')
+    origin_id = models.ForeignKey(Coffee_Origin, on_delete=models.CASCADE,
+                                  null=True,
+                                  related_name="Coffee_Variant")
+    grind_id = models.ForeignKey(Coffee_Grind, on_delete=models.CASCADE,
+                                 null=True,
+                                 related_name="Coffee_Variant")
+    size_id = models.ForeignKey(Coffee_Size, on_delete=models.CASCADE,
+                                null=True,
+                                related_name="Coffee_Variant")
     manufacturer = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField()
