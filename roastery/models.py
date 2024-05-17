@@ -38,6 +38,7 @@ REGION = (
     (4, "Huehuetenango"),
     (5, "Copaceyba"),
     (6, "Malabar"),
+    (7, "-")
 )
 
 
@@ -56,7 +57,7 @@ class Coffee_Origin(models.Model):
     country = models.IntegerField(choices=COUNTRY)
     region = models.IntegerField(choices=REGION)
 
-    def __str__(self):
+    def __int__(self):
         return self.continent
 
 
@@ -64,40 +65,23 @@ class Coffee_Grind(models.Model):
     grind_id = models.AutoField(primary_key=True)
     grind = models.IntegerField(choices=GRIND_CHOICES)
 
-    def __str__(self):
+    def __int__(self):
         return self.grind
 
 
 class Coffee_Size(models.Model):
     size_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    size = models.DecimalField(null=True, max_digits=10, decimal_places=2)
+    unit = models.TextField()
 
-    def __str__(self):
-        return self.name
-
-
-class Coffee_Variant(models.Model):
-    variant_id = models.AutoField(primary_key=True)
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                    related_name="Coffee_Variant")
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    currency = models.CharField(max_length=10)
-    image = models.ImageField(upload_to='products/')
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.name
+    def __int__(self):
+        return self.size
 
 
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name='Product')
-    variant = models.ForeignKey(Coffee_Variant, on_delete=models.
-                                       CASCADE, null=True, related_name='Product')
     origin_id = models.ForeignKey(Coffee_Origin, on_delete=models.CASCADE,
                                   null=True,
                                   related_name="Coffee_Variant")
@@ -115,6 +99,9 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ["-created"]
 
     def __str__(self):
         return self.manufacturer
