@@ -59,6 +59,10 @@ class Coffee_Origin(models.Model):
 
     def __int__(self):
         return self.continent
+    
+    # displays the human-readable name of the origin
+    def __str__(self):
+        return f"{self.get_continent_display()}, {self.get_country_display()}, {self.get_region_display()}"
 
 
 class Coffee_Grind(models.Model):
@@ -67,15 +71,22 @@ class Coffee_Grind(models.Model):
 
     def __int__(self):
         return self.grind
+    
+    # displays the human-readable name of the grind
+    def __str__(self):
+        return self.get_grind_display()
 
 
 class Coffee_Size(models.Model):
     size_id = models.AutoField(primary_key=True)
-    size = models.DecimalField(null=True, max_digits=10, decimal_places=2)
+    size = models.DecimalField(null=True, max_digits=10, decimal_places=0)
     unit = models.TextField()
 
-    def __int__(self):
-        return self.size
+    def __str__(self):
+        return f"{self.size} - {self.formatted_price()}"
+
+    def formatted_price(self):
+        return f"{self.size}"
 
 
 class Product(models.Model):
@@ -84,13 +95,13 @@ class Product(models.Model):
                                  related_name='Product')
     origin_id = models.ForeignKey(Coffee_Origin, on_delete=models.CASCADE,
                                   null=True,
-                                  related_name="Coffee_Variant")
+                                  related_name="Origin")
     grind_id = models.ForeignKey(Coffee_Grind, on_delete=models.CASCADE,
                                  null=True,
-                                 related_name="Coffee_Variant")
+                                 related_name="Grind")
     size_id = models.ForeignKey(Coffee_Size, on_delete=models.CASCADE,
                                 null=True,
-                                related_name="Coffee_Variant")
+                                related_name="Size")
     manufacturer = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -104,4 +115,4 @@ class Product(models.Model):
         ordering = ["-created"]
 
     def __str__(self):
-        return self.manufacturer
+        return {self.name}

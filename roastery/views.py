@@ -5,4 +5,5 @@ from .models import Product
 
 # Create your views here.
 class ProductList(generic.ListView):
-    model = Product
+    queryset = Product.objects.all()
+    template_name = "product_list.html"
