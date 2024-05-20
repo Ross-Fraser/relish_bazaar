@@ -10,14 +10,14 @@ GRIND_CHOICES = (
 )
 
 
-CONTINENT = (
+CONTINENT_CHOICES = (
     (0, "Africa"),
     (1, "Asia"),
     (2, "Americas"),
 )
 
 
-COUNTRY = (
+COUNTRY_CHOICES = (
     (0, "Ethiopia"),
     (1, "Kenya"),
     (2, "Uganda"),
@@ -30,7 +30,7 @@ COUNTRY = (
 )
 
 
-REGION = (
+REGION_CHOICES = (
     (0, "Sidamo"),
     (1, "Blue Mountain"),
     (2, "Agua Santa"),
@@ -52,14 +52,19 @@ class Category(models.Model):
 
 class CoffeeOrigin(models.Model):
     origin_id = models.AutoField(primary_key=True)
-    continent = models.IntegerField(choices=CONTINENT)
-    country = models.IntegerField(choices=COUNTRY)
-    region = models.IntegerField(choices=REGION)
+    continent = models.IntegerField(choices=CONTINENT_CHOICES)
+    country = models.IntegerField(choices=COUNTRY_CHOICES)
+    region = models.IntegerField(choices=REGION_CHOICES)
 
-    def __int__(self):
-        return self.continent
-    
-    # displays the human-readable name of the origin
+    def get_continent_display(self):
+        return dict(CONTINENT_CHOICES).get(self.continent)
+
+    def get_country_display(self):
+        return dict(COUNTRY_CHOICES).get(self.country)
+
+    def get_region_display(self):
+        return dict(REGION_CHOICES).get(self.region)
+
     def __str__(self):
         return f"{self.get_continent_display()}, {self.get_country_display()}, {self.get_region_display()}"
 
@@ -68,10 +73,9 @@ class CoffeeGrind(models.Model):
     grind_id = models.AutoField(primary_key=True)
     grind = models.IntegerField(choices=GRIND_CHOICES)
 
-    def __int__(self):
-        return self.grind
-    
-    # displays the human-readable name of the grind
+    def get_grind_display(self):
+        return dict(GRIND_CHOICES).get(self.grind)
+
     def __str__(self):
         return self.get_grind_display()
 
@@ -88,16 +92,16 @@ class CoffeeSize(models.Model):
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                 related_name="product")
+                                 related_name="products")
     origin_id = models.ForeignKey(CoffeeOrigin, on_delete=models.CASCADE,
                                   null=True,
-                                  related_name="product")
+                                  related_name="products")
     grind_id = models.ForeignKey(CoffeeGrind, on_delete=models.CASCADE,
                                  null=True,
-                                 related_name="product")
+                                 related_name="products")
     size_id = models.ForeignKey(CoffeeSize, on_delete=models.CASCADE,
                                 null=True,
-                                related_name="product")
+                                related_name="products")
     manufacturer = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField()

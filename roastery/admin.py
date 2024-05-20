@@ -6,10 +6,10 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Product)
 class ProductAdmin(SummernoteModelAdmin):
 
-    list_display = ('name',)
-    search_fields = ['name']
-    prepopulated_fields = {('name',)}
+    list_display = ('name', 'price', 'category')
+    search_fields = ['name', 'description']
     summernote_fields = ('description',)
+    list_filter = ('category', 'origin_id', 'grind_id', 'size_id')
     
 
 # Register your models here.
