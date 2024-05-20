@@ -45,13 +45,12 @@ REGION = (
 class Category(models.Model):
     category_id = models.BigAutoField(primary_key=True)
     main_category = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, unique=True)
 
     def __str__(self):
         return self.main_category
 
 
-class Coffee_Origin(models.Model):
+class CoffeeOrigin(models.Model):
     origin_id = models.AutoField(primary_key=True)
     continent = models.IntegerField(choices=CONTINENT)
     country = models.IntegerField(choices=COUNTRY)
@@ -65,7 +64,7 @@ class Coffee_Origin(models.Model):
         return f"{self.get_continent_display()}, {self.get_country_display()}, {self.get_region_display()}"
 
 
-class Coffee_Grind(models.Model):
+class CoffeeGrind(models.Model):
     grind_id = models.AutoField(primary_key=True)
     grind = models.IntegerField(choices=GRIND_CHOICES)
 
@@ -77,37 +76,34 @@ class Coffee_Grind(models.Model):
         return self.get_grind_display()
 
 
-class Coffee_Size(models.Model):
+class CoffeeSize(models.Model):
     size_id = models.AutoField(primary_key=True)
     size = models.DecimalField(null=True, max_digits=10, decimal_places=0)
     unit = models.TextField()
 
     def __str__(self):
-        return f"{self.size} - {self.formatted_price()}"
-
-    def formatted_price(self):
-        return f"{self.size}"
+        return f"{self.size} {self.unit}"
 
 
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                 related_name='Product')
-    origin_id = models.ForeignKey(Coffee_Origin, on_delete=models.CASCADE,
+                                 related_name="product")
+    origin_id = models.ForeignKey(CoffeeOrigin, on_delete=models.CASCADE,
                                   null=True,
-                                  related_name="Origin")
-    grind_id = models.ForeignKey(Coffee_Grind, on_delete=models.CASCADE,
+                                  related_name="product")
+    grind_id = models.ForeignKey(CoffeeGrind, on_delete=models.CASCADE,
                                  null=True,
-                                 related_name="Grind")
-    size_id = models.ForeignKey(Coffee_Size, on_delete=models.CASCADE,
+                                 related_name="product")
+    size_id = models.ForeignKey(CoffeeSize, on_delete=models.CASCADE,
                                 null=True,
-                                related_name="Size")
+                                related_name="product")
     manufacturer = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=3)
-    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    image = models.ImageField(upload_to="products/", null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
@@ -115,4 +111,4 @@ class Product(models.Model):
         ordering = ["-created"]
 
     def __str__(self):
-        return {self.name}
+        return self.name

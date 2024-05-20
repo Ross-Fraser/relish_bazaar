@@ -1,9 +1,19 @@
 from django.contrib import admin
-from .models import Category, Coffee_Origin, Coffee_Grind, Coffee_Size, Product
+from .models import Category, CoffeeOrigin, CoffeeGrind, CoffeeSize, Product
+from django_summernote.admin import SummernoteModelAdmin
+
+
+@admin.register(Product)
+class ProductAdmin(SummernoteModelAdmin):
+
+    list_display = ('name',)
+    search_fields = ['name']
+    prepopulated_fields = {('name',)}
+    summernote_fields = ('description',)
+    
 
 # Register your models here.
 admin.site.register(Category)
-admin.site.register(Coffee_Origin)
-admin.site.register(Coffee_Grind)
-admin.site.register(Coffee_Size)
-admin.site.register(Product)
+admin.site.register(CoffeeOrigin)
+admin.site.register(CoffeeGrind)
+admin.site.register(CoffeeSize)
