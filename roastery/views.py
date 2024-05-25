@@ -6,4 +6,5 @@ from .models import Product
 # Create your views here.
 class ProductList(generic.ListView):
     queryset = Product.objects.all()
-    template_name = "product_list.html"
+    template_name = "roastery/index.html"
+    paginate_by = 6
