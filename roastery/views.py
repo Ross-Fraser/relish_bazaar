@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Product, CoffeeOrigin, CONTINENT_CHOICES
+from .models import Product, CONTINENT_CHOICES
 
 def index(request):
     continent_list = [
-        {'name': 'Africa', 'image': 'images/Relish-Coffee-Africa-Selection-300x300.webp'},
-        {'name': 'Asia', 'image': 'images/Relish-Coffee-Asia-Selection-300x300.webp'},
-        {'name': 'Americas', 'image': 'images/Relish-Coffee-America-Selection-300x300.webp'},
+        {'name': 'African', 'image': 'images/Relish-Coffee-Africa-Selection-300x300.webp'},
+        {'name': 'Asian', 'image': 'images/Relish-Coffee-Asia-Selection-300x300.webp'},
+        {'name': 'American', 'image': 'images/Relish-Coffee-America-Selection-300x300.webp'},
     ]
     return render(request, 'index.html', {'continent_list': continent_list})
 
-#class ProductList(generic.ListView):
+class ProductList(generic.ListView):
     queryset = Product.objects.all()
     template_name = "roastery/index.html"
     paginate_by = 6
