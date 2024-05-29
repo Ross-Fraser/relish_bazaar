@@ -12,9 +12,9 @@ GRIND_CHOICES = (
 
 
 CONTINENT_CHOICES = (
-    (0, "Africa"),
-    (1, "Asia"),
-    (2, "Americas"),
+    (0, "African"),
+    (1, "Asian"),
+    (2, "American"),
 )
 
 
@@ -114,7 +114,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=3)
-    image = models.CharField(max_length=250)
+    image = models.CharField(max_length=250, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
