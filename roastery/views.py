@@ -4,9 +4,9 @@ from .models import Product, CONTINENT_CHOICES
 
 def index(request):
     continent_list = [
-        {'name': 'African', 'image': 'images/Relish-Coffee-Africa-Selection-300x300.webp'},
-        {'name': 'Asian', 'image': 'images/Relish-Coffee-Asia-Selection-300x300.webp'},
-        {'name': 'American', 'image': 'images/Relish-Coffee-America-Selection-300x300.webp'},
+        {'name': 'African', 'image': 'images/coffee/Relish-Coffee-Africa-Selection-300x300.webp'},
+        {'name': 'Asian', 'image': 'images/coffee/Relish-Coffee-Asia-Selection-300x300.webp'},
+        {'name': 'American', 'image': 'images/coffee/Relish-Coffee-America-Selection-300x300.webp'},
     ]
     return render(request, 'index.html', {'continent_list': continent_list})
 

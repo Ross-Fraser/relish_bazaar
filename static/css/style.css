@@ -1,3 +1,37 @@
 .brand-img {
     width: 25%;
 }
+
+.hero-img {
+    width: 100%;
+    height: auto;
+}
+
+body {
+    background-color: #F9FAFC;
+}
+
+.bg-white {
+    background-color: #1ABC9C !important;
+}
+
+.nav-link {
+    color: #FFFFFF !important;
+}
+
+.text-muted {
+    color: #FFFFFF !important;
+}
+
+.main-bg {
+    background-color: #F9FAFC;
+}
+
+.dark-bg {
+    background-color: #1ABC9C;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+}
