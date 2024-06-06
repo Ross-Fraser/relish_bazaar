@@ -23,6 +23,18 @@ body {
     color: #FFFFFF !important;
 }
 
+.nav-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 100%;
+}
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
 .main-bg {
     background-color: #F9FAFC;
 }
