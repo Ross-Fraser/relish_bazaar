@@ -24,15 +24,13 @@ body {
 }
 
 .nav-button {
-    padding: 10px 15px;
-    background-color: #007bff;
+    padding: 10px 0px;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     margin-left: 100%;
-}
-.nav-button:hover {
-    background-color: #0056b3;
+    display: inline-block;
+    margin: 5px;
 }
 
 .main-bg {
@@ -46,4 +44,8 @@ body {
 .footer {
     width: 100%;
     text-align: center;
+}
+
+.form {
+    padding-left: 20px;
 }
