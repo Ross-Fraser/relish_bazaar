@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Product, CONTINENT_CHOICES
 
@@ -23,3 +23,7 @@ def origin_products(request, continent_name):
 
     products = Product.objects.filter(origin_id__continent=continent_index)
     return render(request, 'origin_products.html', {'products': products, 'continent_name': continent_name})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
+    return render(request, 'product_detail.html', {'product': product})

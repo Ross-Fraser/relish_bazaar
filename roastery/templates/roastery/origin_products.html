@@ -10,6 +10,7 @@
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
+                    <a href="{% url 'product_detail' product.product_id %}">
                     <img src="{% static product.image %}" alt="{{ product.name }}" class="img-fluid">
                     <h2 class="card-title">{{ product.name }}</h2>
                 </div>
