@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import sys
 import os
 import dj_database_url
 if os.path.isfile('env.py'):
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_summernote',
+    'debug_toolbar',
     'roastery',
     'accounts',
 ]
@@ -58,6 +60,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'relishBazaar.urls'
@@ -65,7 +73,11 @@ ROOT_URLCONF = 'relishBazaar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'accounts', 'templates', 'accounts'),
+            os.path.join(BASE_DIR, 'roastery', 'templates', 'roastery'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +97,17 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
+env_path = os.path.join(os.path.dirname(__file__), 'env.py')
+if os.path.exists(env_path):
+    sys.path.insert(0, os.path.dirname(__file__))
+    import env
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env.EMAIL_HOST
+EMAIL_PORT = env.EMAIL_PORT
+EMAIL_USE_TLS = env.EMAIL_USE_TLS
+EMAIL_HOST_USER = env.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = env.EMAIL_HOST_PASSWORD
 
 
 # Database
