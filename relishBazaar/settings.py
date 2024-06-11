@@ -46,8 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django_summernote',
     'debug_toolbar',
+    'cloudinary',
     'roastery',
     'accounts',
 ]

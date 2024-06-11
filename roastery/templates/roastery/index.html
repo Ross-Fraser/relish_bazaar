@@ -12,7 +12,13 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                <img src="{% static continent.image %}" alt="{{ continent.name }}" class="img-fluid">
+                                {% if "placeholder" in continent.featured_image.url %}
+                                    <img class="img-fluid" src="{% static 'images/coffee' %}"
+                                    alt="{{ continent.name }}">
+                                {% else %}
+                                    <img class="img-fluid" src=" {{ continent.featured_image.url }}"
+                                    alt="{{ continent.name }}">
+                                {% endif %}
                             </div>
                             <a href="{% url 'origin_products' continent.name %}" class="continent-link">
                                 <h2 class="card-title">{{ continent.name }} Coffee</h2>
