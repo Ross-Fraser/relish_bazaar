@@ -13,6 +13,9 @@
             <p>{{ product.description }}</p>
             <p><strong>Price:</strong> ${{ product.price }}</p>
         </div>
+        <form action="{% url 'enquiry_form' product.product_id %}" method="get">
+            <button type="submit">Enquire</button>
+        </form>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}

@@ -6,5 +6,7 @@ urlpatterns = [
     path("", views.index, name="home"),
     path("products/", views.ProductList.as_view(), name="product_list"),
     path("origin/<str:continent_name>/", views.origin_products, name="origin_products"),
-    path('product/<int:product_id>/', views.product_detail, name='product_detail'),
+    path("product/<int:product_id>/", views.product_detail, name="product_detail"),
+    path("enquiry/<int:product_id>/", views.enquiry_form, name="enquiry_form"),
+    path('success/', views.success_page, name='success_page'),
 ]
