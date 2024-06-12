@@ -12,11 +12,11 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {% if "placeholder" in continent.featured_image.url %}
+                                {% if "placeholder" in continent.image.url %}
                                     <img class="img-fluid" src="{% static 'images/coffee' %}"
                                     alt="{{ continent.name }}">
                                 {% else %}
-                                    <img class="img-fluid" src=" {{ continent.featured_image.url }}"
+                                    <img class="img-fluid" src=" {{ continent.image.url }}"
                                     alt="{{ continent.name }}">
                                 {% endif %}
                             </div>

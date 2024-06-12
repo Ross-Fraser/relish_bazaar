@@ -7,9 +7,9 @@ from .models import Product, CONTINENT_CHOICES
 
 def index(request):
     continent_list = [
-        {'name': 'African', 'image': 'images/coffee/Relish-Coffee-Africa-Selection-300x300.webp'},
-        {'name': 'Asian', 'image': 'images/coffee/Relish-Coffee-Asia-Selection-300x300.webp'},
-        {'name': 'American', 'image': 'images/coffee/Relish-Coffee-America-Selection-300x300.webp'},
+      {'name': 'African', 'image': Product.objects.filter(origin_id__continent=0).first().image},
+        {'name': 'Asian', 'image': Product.objects.filter(origin_id__continent=1).first().image},
+        {'name': 'American', 'image': Product.objects.filter(origin_id__continent=2).first().image},
     ]
     return render(request, 'index.html', {'continent_list': continent_list})
 
