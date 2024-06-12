@@ -1,1 +1,1 @@
-web: gunicorn relishBazaar.wsgi
+web: gunicorn relishBazaar.wsgi --timeout 90 --log-file -
