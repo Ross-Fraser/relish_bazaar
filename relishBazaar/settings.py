@@ -48,6 +48,9 @@ ALLOWED_HOSTS = [
     '.herokuapp.com'
 ]
 
+# Admins Email
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+
 
 # Application definition
 

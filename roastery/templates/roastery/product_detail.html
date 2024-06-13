@@ -16,8 +16,8 @@
             <h1>{{ product.name }}</h1>
             <p>{{ product.description | safe }}</p>
             <p><strong>Price:</strong> &pound;{{ product.price }}</p>
-            <form action="{% url 'enquiry_form' product.product_id %}" method="get">
-                <button type="submit">Enquire</button>
+            <form action="{% url 'purchase_form' product.product_id %}" method="get">
+                <button type="submit">Purchase</button>
             </form>
         </div>
     </div>

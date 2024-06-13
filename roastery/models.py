@@ -11,6 +11,8 @@ GRIND_CHOICES = (
     (4, "Extra Fine")
 )
 
+GRIND_CHOICES_DICT = dict(GRIND_CHOICES)
+
 
 CONTINENT_CHOICES = (
     (0, "African"),
