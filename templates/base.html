@@ -61,24 +61,21 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+    
             <div class="nav-buttons">
                 {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}" class="nav-button">Logout</a>
+                <a href="{% url 'logout' %}" class="nav-button"><i class="fa fa-user"></i> Logout</a>
                 {% else %}
-                <a href="{% url 'login' %}" class="nav-button">Login</a>
-                <a href="{% url 'register' %}" class="nav-button">Register</a>
+                <a href="#" class="nav-button" data-bs-toggle="collapse" data-bs-target="#loginRegisterOptions"><i class="fa fa-user"></i></a>
+                <div class="collapse" id="loginRegisterOptions">
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                    <a href="{% url 'register' %}" class="nav-link">Register</a>
+                </div>
                 {% endif %}
             </div>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-button {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">Home</a>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </nav>
+    </nav>   
+       
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -100,6 +97,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/navbar.js' %}"></script>
 </body>
 
 </html>
