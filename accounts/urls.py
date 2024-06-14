@@ -4,19 +4,19 @@ from . import views
 
 urlpatterns = [
     path('register/', views.register, name="register"),
-    path('login/', auth_views.LoginView.as_view(template_name="accounts/login.html"), name="login"),
-    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logged_out.html'), name='logout'),
+    path('login/', auth_views.LoginView.as_view(template_name="registration/login.html"), name="login"),
+    path('logout/', auth_views.LogoutView.as_view(template_name='registration/logged_out.html'), name='logout'),
     path('password_reset_form/', auth_views.PasswordResetView.as_view(
-        template_name='accounts/password_reset_form.html'
+        template_name='registration/password_reset_form.html'
     ), name='password_reset_form'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(
-        template_name='accounts/password_reset_done.html'
+    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='registration/password_reset_done.html'
     ), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
-        template_name='accounts/password_reset_process.html'
+        template_name='registration/password_reset_process.html'
     ), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(
-        template_name='accounts/password_reset_process.html'
+    path('reset_done/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='registration/password_reset_process.html'
     ), name='password_reset_complete'),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
