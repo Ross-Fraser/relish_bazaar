@@ -13,16 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import sys
 import os
-import environ
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
-    
-# Initialize environment variables
-env = environ.Env()
-environ.Env.read_env()
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -124,7 +117,7 @@ if os.path.exists(env_path):
     import env
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env.EMAIL_HOST
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = env.EMAIL_PORT
 EMAIL_USE_TLS = env.EMAIL_USE_TLS
 EMAIL_HOST_USER = env.EMAIL_HOST_USER
