@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
+from django.http import HttpResponseBadRequest
 from django.conf import settings
-from .forms import EnquiryForm
+from .forms import EnquiryForm, ProductForm
 from django.views import generic
 from .models import Product, CONTINENT_CHOICES, GRIND_CHOICES
-
 
 def index(request):
     continent_list = [
@@ -77,3 +77,38 @@ def purchase_form(request, product_id):
 
 def success_page(request):
     return render(request, 'success_page.html')
+
+
+def create_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+        else:
+            return HttpResponseBadRequest("Form is not valid")
+    else:
+        form = ProductForm()
+    return render(request, 'roastery/product_form.html', {'form': form})
+
+def products_list(request):
+    products = Product.objects.all()
+    return render(request, 'roastery/product_list.html', {'products': products})
+
+def update_product(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'roastery/product_form.html', {'form': form})
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product_list')
+    return render(request, 'roastery/product_confirm_delete.html', {'product': product})
