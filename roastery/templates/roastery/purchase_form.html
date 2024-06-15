@@ -3,15 +3,15 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <title>Purchase Form</title>
         <div class="col-12 mt-3">
             <h1>Purchase a bag of {{ product.name }}</h1>
-            <form method="post">
+            <form method="post" class="my-form">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

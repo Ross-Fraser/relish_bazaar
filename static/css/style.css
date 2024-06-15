@@ -2,13 +2,12 @@
     width: 25%;
 }
 
-.hero-img {
-    width: 100%;
-    height: auto;
-}
-
 body {
     background-color: #F9FAFC;
+}
+
+container-fluid {
+    padding: 5px, 5px;
 }
 
 .bg-white {

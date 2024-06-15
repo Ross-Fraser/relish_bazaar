@@ -66,15 +66,13 @@
                 {% if user.is_authenticated and user.is_staff %}
                 <!-- CRUD Dropdown Button -->
                 <div class="nav-button">
-                    <button class="btn btn-secondary" type="button" id="crud" aria-expanded="false">
-                        <a href="{% url 'manage_products' %}">
-                            <i class="fa fa-cogs"></i> Manage Products
-                        </a>
-                    </button>
+                    <a href="{% url 'manage_products' %}" class="btn text-white">
+                        Manage Products
+                    </a>
                 </div>
                 {% endif %}
                 {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}" class="nav-button"><i class="fa fa-user"></i> Logout</a>
+                <a href="{% url 'logout' %}" class="nav-button text-white"><i class="fa fa-user"></i> Logout</a>
                 {% else %}
                 <a href="#" class="nav-button" data-bs-toggle="collapse" data-bs-target="#loginRegisterOptions"><i class="fa fa-user"></i></a>
                 <div class="collapse" id="loginRegisterOptions">
@@ -85,6 +83,9 @@
             </div>
         </div>
     </nav>
+    
+    
+    
        
 
     <main class="flex-shrink-0 main-bg">
@@ -98,9 +99,9 @@
         <div class="container">
                 <p class="m-0 text-center text-white">
                 Follow us:
-                <a href="https://facebook.com" aria-label="Facebook" class="text-white ms-3"><i class="fab fa-facebook-square"></i></a>
-                <a href="https://twitter.com" aria-label="Twitter" class="text-white ms-3"><i class="fab fa-twitter-square"></i></a>
-                <a href="https://instagram.com" aria-label="Instagram" class="text-white ms-3"><i class="fab fa-instagram-square"></i></a>
+                <a href="https://facebook.com" aria-label="Facebook" class="text-white ms-3" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://twitter.com" aria-label="Twitter" class="text-white ms-3" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                <a href="https://instagram.com" aria-label="Instagram" class="text-white ms-3" target="_blank"><i class="fab fa-instagram-square"></i></a>
             </p>
         </div>
     </footer>
