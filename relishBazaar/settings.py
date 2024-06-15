@@ -106,6 +106,7 @@ env_path = os.path.join(os.path.dirname(__file__), 'env.py')
 if os.path.exists(env_path):
     sys.path.insert(0, os.path.dirname(__file__))
     import env
+    from env import EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
