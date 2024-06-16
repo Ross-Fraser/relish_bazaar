@@ -8,11 +8,18 @@ from .models import Product, CONTINENT_CHOICES, GRIND_CHOICES
 
 def index(request):
     continent_list = [
-      {'name': 'African', 'image': Product.objects.filter(origin_id__continent=0).first().image},
-        {'name': 'Asian', 'image': Product.objects.filter(origin_id__continent=1).first().image},
-        {'name': 'American', 'image': Product.objects.filter(origin_id__continent=2).first().image},
+        {'name': 'African', 'image': get_continent_image(0)},
+        {'name': 'Asian', 'image': get_continent_image(1)},
+        {'name': 'American', 'image': get_continent_image(2)},
     ]
     return render(request, 'index.html', {'continent_list': continent_list})
+
+def get_continent_image(continent_index):
+    try:
+        return Product.objects.filter(origin_id__continent=continent_index).first().image
+    except AttributeError:
+        # Handle the case where no products are found for the continent
+        return None
 
 class ProductList(generic.ListView):
     queryset = Product.objects.all()

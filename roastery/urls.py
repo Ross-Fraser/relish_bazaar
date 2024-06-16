@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
+from .views import index
+
 
 
 urlpatterns = [
-    path("", views.index, name="home"),
+    path("home", views.index, name="home"),
     path("origin/<str:continent_name>/", views.origin_products, name="origin_products"),
     path("product/<int:product_id>/", views.product_detail, name="product_detail"),
     path("purchase/<int:product_id>/", views.purchase_form, name="purchase_form"),
