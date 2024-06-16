@@ -3,8 +3,8 @@ from django import forms
 from .models import Product, GRIND_CHOICES
 
 class EnquiryForm(forms.Form):
-    product_name = forms.CharField(max_length=100)
-    product_price = forms.DecimalField(max_digits=10, decimal_places=2)
+    product_name = forms.CharField(widget=forms.HiddenInput())
+    product_price = forms.CharField(widget=forms.HiddenInput())
     name = forms.CharField(max_length=100)
     address = forms.CharField(max_length=255)
     contact_number = forms.CharField(max_length=15)

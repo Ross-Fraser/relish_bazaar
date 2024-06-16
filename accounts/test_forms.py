@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordResetForm
 from .forms import SignUpForm
+from django.urls import reverse
 
 class SignUpFormTest(TestCase):
 
@@ -46,3 +48,23 @@ class SignUpFormTest(TestCase):
         form = SignUpForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('username', form.errors)
+        
+class PasswordResetFormTest(TestCase):
+    def test_password_reset_form(self):
+        response = self.client.get(reverse('password_reset'))
+        self.assertEqual(response.status_code, 200)
+
+        # Ensure email input field is present
+        self.assertContains(response, 'id="id_email"', count=1)
+        self.assertContains(response, 'type="email"', count=1)
+
+        # Ensure CSRF token is present
+        self.assertContains(response, 'csrfmiddlewaretoken')
+
+        # Ensure submit button is present
+        self.assertContains(response, '<button', count=1)
+        self.assertContains(response, 'type="submit"', count=1)
+        self.assertContains(response, 'Reset my password')
+
+        # Ensure form is using POST method
+        self.assertContains(response, 'method="post"')
