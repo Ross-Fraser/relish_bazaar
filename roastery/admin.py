@@ -11,7 +11,7 @@ class ProductAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('category', 'origin_id', 'grind_id', 'size_id')
-    
+
 
 # Register your models here.
 admin.site.register(Category)

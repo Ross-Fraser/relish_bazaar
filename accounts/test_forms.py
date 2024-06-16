@@ -4,6 +4,7 @@ from django.contrib.auth.forms import PasswordResetForm
 from .forms import SignUpForm
 from django.urls import reverse
 
+
 class SignUpFormTest(TestCase):
 
     def test_valid_form(self):
@@ -38,7 +39,9 @@ class SignUpFormTest(TestCase):
         self.assertIn('password2', form.errors)
 
     def test_invalid_form_existing_user(self):
-        User.objects.create_user(username='existinguser', email='existing@example.com', password='password123')
+        User.objects.create_user(username='existinguser',
+                                 email='existing@example.com',
+                                 password='password123')
         form_data = {
             'username': 'existinguser',
             'email': 'newuser@example.com',
@@ -48,7 +51,8 @@ class SignUpFormTest(TestCase):
         form = SignUpForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('username', form.errors)
-        
+
+
 class PasswordResetFormTest(TestCase):
     def test_password_reset_form(self):
         response = self.client.get(reverse('password_reset'))
@@ -68,3 +72,4 @@ class PasswordResetFormTest(TestCase):
 
         # Ensure form is using POST method
         self.assertContains(response, 'method="post"')
+        

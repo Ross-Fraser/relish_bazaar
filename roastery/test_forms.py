@@ -5,6 +5,7 @@ import os
 from .forms import EnquiryForm, ProductForm
 from .models import Product, GRIND_CHOICES, Category, CoffeeOrigin, CoffeeGrind, CoffeeSize
 
+
 class EnquiryFormTest(TestCase):
 
     def test_valid_form(self):
@@ -50,26 +51,31 @@ class EnquiryFormTest(TestCase):
         self.assertIn('email_address', form.errors)
         self.assertIn('grind', form.errors)
 
+
 class ProductFormTest(TestCase):
 
     def setUp(self):
         self.category = Category.objects.create(main_category='Beverage')
-        self.origin = CoffeeOrigin.objects.create(continent=0, country=0, region=0)
+        self.origin = CoffeeOrigin.objects.create(continent=0, country=0,
+                                                  region=0)
         self.grind = CoffeeGrind.objects.create(grind=0)
         self.size = CoffeeSize.objects.create(size=250, unit='g')
 
     def test_valid_form_with_image(self):
         # Get the absolute path to the image file
-        image_path = os.path.join('static', 'images', 'coffee', 'relish_test_image.webp')
-        
+        image_path = os.path.join('static', 'images', 'coffee',
+                                  'relish_test_image.webp')
+
         # Open the image file in binary mode and read its content
         with open(image_path, 'rb') as f:
             file_content = f.read()
 
         # Create a temporary image file for testing
-        image_file = SimpleUploadedFile('relish_test_image.webp', file_content, content_type='image/webp')
+        image_file = SimpleUploadedFile('relish_test_image.webp',
+                                        file_content,
+                                        content_type='image/webp')
 
-        # Populate form data including the image field with the temporary image file
+        # Populate form data including the image field with the temporary image
         form_data = {
             'category': self.category.category_id,
             'origin_id': self.origin.origin_id,
@@ -87,13 +93,15 @@ class ProductFormTest(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_invalid_price(self):
-        image_path = os.path.join('static', 'images', 'coffee', 'relish_test_image.webp')
-        
+        image_path = os.path.join('static', 'images', 'coffee',
+                                  'relish_test_image.webp')
+
         with open(image_path, 'rb') as f:
             file_content = f.read()
-        
-        image_file = SimpleUploadedFile('relish_test_image.webp', file_content, content_type='image/webp')
-        
+
+        image_file = SimpleUploadedFile('relish_test_image.webp', file_content,
+                                        content_type='image/webp')
+
         form_data = {
             'category': self.category.category_id,
             'origin_id': self.origin.origin_id,
@@ -113,7 +121,8 @@ class ProductFormTest(TestCase):
         form_data = {
             'category': self.category.category_id,
             'origin_id': self.origin.origin_id,
-            # Missing grind_id, size_id, manufacturer, name, description, price, currency, and image
+            # Missing grind_id, size_id, manufacturer, name, description,
+            # price, currency, and image
         }
         form = ProductForm(data=form_data)
         self.assertFalse(form.is_valid())

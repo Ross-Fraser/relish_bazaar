@@ -6,6 +6,7 @@ from .forms import EnquiryForm, ProductForm
 from django.views import generic
 from .models import Product, CONTINENT_CHOICES, GRIND_CHOICES
 
+
 def index(request):
     continent_list = [
         {'name': 'African', 'image': get_continent_image(0)},
@@ -14,6 +15,7 @@ def index(request):
     ]
     return render(request, 'index.html', {'continent_list': continent_list})
 
+
 def get_continent_image(continent_index):
     try:
         return Product.objects.filter(origin_id__continent=continent_index).first().image
@@ -21,23 +23,31 @@ def get_continent_image(continent_index):
         # Handle the case where no products are found for the continent
         return None
 
+
 class ProductList(generic.ListView):
     queryset = Product.objects.all()
     template_name = "roastery/index.html"
     paginate_by = 6
 
+
 def origin_products(request, continent_name):
-    continent_index = next((index for index, name in CONTINENT_CHOICES if name == continent_name), None)
+    continent_index = next((index for index,
+                           name in CONTINENT_CHOICES if name ==
+                           continent_name), None)
     if continent_index is None:
         # Handle the case where the continent name is not found
-        return render(request, 'origin_products.html', {'products': [], 'continent_name': continent_name})
+        return render(request, 'origin_products.html', {'products': [],
+                      'continent_name': continent_name})
 
     products = Product.objects.filter(origin_id__continent=continent_index)
-    return render(request, 'origin_products.html', {'products': products, 'continent_name': continent_name})
+    return render(request, 'origin_products.html', {'products': products,
+                  'continent_name': continent_name})
+
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
     return render(request, 'product_detail.html', {'product': product})
+
 
 def purchase_form(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
@@ -47,7 +57,8 @@ def purchase_form(request, product_id):
         if form.is_valid():
             # Process form data
             send_mail(
-                subject=f'I would like to purchase a bag of {form.cleaned_data["product_name"]}',
+                subject=f'I would like to purchase a bag of '
+                        f'{form.cleaned_data["product_name"]}',
                 message=(
                     f'Name: {form.cleaned_data["name"]}\n'
                     f'Address: {form.cleaned_data["address"]}\n'
@@ -59,12 +70,13 @@ def purchase_form(request, product_id):
                 from_email=form.cleaned_data["email_address"],
                 recipient_list=[settings.EMAIL_HOST_USER],
             )
-            
+
             # Send confirmation email to the user
             send_mail(
                 subject='Your purchase enquiry has been received',
                 message=(
-                    f'Thank you for your enquiry, {form.cleaned_data["name"]}.\n\n'
+                    f'Thank you for your enquiry,'
+                    f'{form.cleaned_data["name"]}.\n\n'
                     f'Here are the details of your enquiry:\n'
                     f'Product Name: {form.cleaned_data["product_name"]}\n'
                     f'Product Price: {form.cleaned_data["product_price"]}\n'
@@ -74,12 +86,14 @@ def purchase_form(request, product_id):
                 from_email='yourstore@example.com',
                 recipient_list=[form.cleaned_data["email_address"]],
             )
-            
+
             return redirect('success_page')
     else:
-        form = EnquiryForm(initial={'product_name': product.name, 'product_price': product.price})
+        form = EnquiryForm(initial={'product_name': product.name,
+                           'product_price': product.price})
 
-    return render(request, 'purchase_form.html', {'form': form, 'product': product})
+    return render(request, 'purchase_form.html', {'form': form,
+                  'product': product})
 
 
 def success_page(request):
@@ -98,9 +112,12 @@ def create_product(request):
         form = ProductForm()
     return render(request, 'roastery/product_form.html', {'form': form})
 
+
 def products_list(request):
     products = Product.objects.all()
-    return render(request, 'roastery/product_list.html', {'products': products})
+    return render(request,
+                  'roastery/product_list.html', {'products': products})
+
 
 def update_product(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
@@ -113,9 +130,11 @@ def update_product(request, product_id):
         form = ProductForm(instance=product)
     return render(request, 'roastery/product_form.html', {'form': form})
 
+
 def delete_product(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
     if request.method == 'POST':
         product.delete()
         return redirect('product_list')
-    return render(request, 'roastery/product_confirm_delete.html', {'product': product})
+    return render(request,
+                  'roastery/product_confirm_delete.html', {'product': product})
