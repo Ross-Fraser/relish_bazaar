@@ -1,39 +1,146 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![home_screen](static\images\screenshots\home_screen.png)
 
-Welcome,
+# Relish Bazaar - Coffee Shop Website
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Welcome to Relish Bazaar, your ultimate online coffee shop experience! This project aims to create an interactive and user-friendly website for our coffee shop, providing customers with an easy way to browse and make enquires.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## Introduction
 
-## Codeanywhere Reminders
+Relish Bazaar is a web-based application designed to streamline the coffee ordering process for customers. The website features an intuitive interface where users can explore our menu and customize their orders.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+## Key Objectives
 
-`python3 -m http.server`
+The key objectives for the Relish Bazaar coffee shop website project are as follows:
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+Enhance User Experience:
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+Provide an intuitive and visually appealing interface for customers to browse and make enquires.
+Ensure the website is responsive and accessible on various devices and screen sizes.
 
-`http_server`
+Efficient Data Management:
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Implement a robust database structure using Entity-Relationship Diagrams (ERDs) to ensure data integrity and efficiency.
+Facilitate easy addition, modification, and deletion of menu items by the admin through a user-friendly admin interface.
+Security and Reliability:
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+Ensure secure handling of user data, including encrypted storage of passwords.
+Perform thorough testing, including unit tests, to ensure the reliability and correctness of the codebase.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Maintainability and Scalability:
 
-To log into the Heroku toolbelt CLI:
+Write clean, maintainable, and well-documented code adhering to coding standards such as PEP8 for Python.
+Design the system to be scalable to handle an increasing number of users and orders as the business grows.
+Compliance with Web Standards:
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Validate HTML, CSS, and JavaScript code to ensure compliance with web standards and improve cross-browser compatibility.
+Ensure the website is accessible to users with disabilities, following accessibility guidelines.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Design Process
 
----
+Entity-Relationship Diagrams (ERD)
 
-Happy coding!
+Entity-Relationship Diagrams (ERDs) played a crucial role in the design process of Relish Bazaar. ERDs help in visualizing the database structure, showing how entities such as Categories, Coffee Origin, Coffee Grind, Coffee size, products and how they  relate to each other. This design step ensures a well-organized database, improving data integrity and efficiency.
+
+Key Entities include:
+
+Category: Groups coffee into categories like "Arabica", "Robusta".
+CoffeeOrigin: Specifies the origin of the coffee beans used in the menu items, such as "Colombia", "Ethiopia", or "Brazil".
+CoffeeGrind: Defines the grind level of the coffee, such as "Whole Bean", "Course", "Medium", "Fine".
+CoffeeSize: Details the available sizes for coffee bags, currently "250g".
+
+## User Stories
+
+User stories were essential in guiding the development process, ensuring that the website meets the needs of its users.
+
+
+### Screenshots
+
+![main screen](static\images\screenshots\home_screen.png)
+![product_detail](static\images\screenshots\product_detail_.png)
+![purchase_form](static\images\screenshots\purchase_form.png)
+![register_form](static\images\screenshots\register_form.png)
+![CRUD_screen](static\images\screenshots\CRUD_screen.png)
+
+### 2. Responsive Design
+
+Create a responsive and visually appealing user interface that works seamlessly on various devices, including desktops, tablets, and mobile phones. Prioritize a user-friendly experience with clear instructions and intuitive controls.
+
+### 3. Dynamic Interaction
+
+Implement JavaScript to handle the dynamic interaction between the user and the computer. Ensure that the game responds promptly to user input, updates the game state accordingly, and displays the results of each round in an engaging manner.
+
+### 4. Stylish UI/UX
+
+Design an aesthetically pleasing user interface with appropriate styling using CSS. Utilize visual elements to enhance the experience and make the interface more engaging.
+
+### 5. Code Organization
+
+Maintain a well-organized codebase with clear separation of concerns. Use separate HTML, CSS, and JavaScript files to enhance readability and ease of maintenance. Comment the code where necessary to provide insights into the implementation details.
+
+
+# Testing
+
+## Unit Tests
+
+Unit tests were written to ensure the reliability and correctness of the code. Each function and component of the website was tested individually to verify that they work as expected. The tests cover various aspects such as:
+
+Form validation
+User authentication
+Enquiry processing
+Menu item management
+Code Validation
+PEP8
+
+All Python code was validated against the PEP8 style guide to maintain readability and consistency. PEP8 compliance helps in keeping the codebase clean and manageable.
+
+## HTML Validator
+
+The HTML code was validated using the W3C HTML Validator to ensure it meets web standards and is free from errors. This validation helps in maintaining cross-browser compatibility and accessibility.
+
+#### Testing Screenshots
+
+![web accessibility test](assets/images/screenshots/accessibility_test.webp)
+![lighthouse_mobile](static\images\screenshots\lighthouse_mobile.png)
+![lighthouse_desktop](static\images\screenshots\lighthouse_desktop.png)
+
+## Bugs
+
+The are no bugs in the system.
+
+# Getting Started
+
+## Prerequisites
+
+Python 3.x
+Django
+A web browser for testing
+
+## Installation
+
+Clone the repository:
+
+git clone https://github.com/Ross-Fraser/relish-bazaar.git
+
+Navigate to the project directory:
+
+cd relish-bazaar
+
+Install the required dependencies:
+
+pip install -r requirements.txt
+
+## Usage
+
+To start the development server, run:
+
+python manage.py runserver
+
+Open your web browser and go to http://127.0.0.1:8000/ to see the website in action.
+
+## Contributing
+
+We welcome contributions to improve Relish Bazaar! Please fork the repository and submit pull requests for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
