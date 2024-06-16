@@ -39,6 +39,8 @@ Ensure the website is accessible to users with disabilities, following accessibi
 
 Entity-Relationship Diagrams (ERD)
 
+![entity-relationship_diagram](static\images\screenshots\entity-relationship_diagram.png)
+
 Entity-Relationship Diagrams (ERDs) played a crucial role in the design process of Relish Bazaar. ERDs help in visualizing the database structure, showing how entities such as Categories, Coffee Origin, Coffee Grind, Coffee size, products and how they  relate to each other. This design step ensures a well-organized database, improving data integrity and efficiency.
 
 Key Entities include:
@@ -99,7 +101,6 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 #### Testing Screenshots
 
-![web accessibility test](assets/images/screenshots/accessibility_test.webp)
 ![lighthouse_mobile](static\images\screenshots\lighthouse_mobile.png)
 ![lighthouse_desktop](static\images\screenshots\lighthouse_desktop.png)
 
