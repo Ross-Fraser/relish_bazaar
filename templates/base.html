@@ -74,7 +74,7 @@
                 {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}" class="nav-button text-white"><i class="fa fa-user"></i> Logout</a>
                 {% else %}
-                <a href="#" class="nav-button" data-bs-toggle="collapse" data-bs-target="#loginRegisterOptions"><i class="fa fa-user"></i></a>
+                <a class="nav-button" data-bs-toggle="collapse" data-bs-target="loginRegisterOptions"><i class="fa fa-user"></i></a>
                 <div class="collapse" id="loginRegisterOptions">
                     <a href="{% url 'login' %}" class="nav-link">Login</a>
                     <a href="{% url 'register' %}" class="nav-link">Register</a>
