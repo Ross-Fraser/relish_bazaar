@@ -1,4 +1,4 @@
-![home_screen](static\images\screenshots\home_screen.png)
+![home_screen](staticfiles\images\screenshots\home_screen.png)
 
 # Relish Bazaar - Coffee Shop Website
 
@@ -39,7 +39,7 @@ Ensure the website is accessible to users with disabilities, following accessibi
 
 Entity-Relationship Diagrams (ERD)
 
-![entity-relationship_diagram](static\images\screenshots\entity-relationship_diagram.png)
+![entity-relationship_diagram](staticfiles\images\screenshots\entity-relationship_diagram.png)
 
 Entity-Relationship Diagrams (ERDs) played a crucial role in the design process of Relish Bazaar. ERDs help in visualizing the database structure, showing how entities such as Categories, Coffee Origin, Coffee Grind, Coffee size, products and how they  relate to each other. This design step ensures a well-organized database, improving data integrity and efficiency.
 
@@ -57,19 +57,15 @@ User stories were essential in guiding the development process, ensuring that th
 
 ### Screenshots
 
-![main screen](static\images\screenshots\home_screen.png)
-![product_detail](static\images\screenshots\product_detail_.png)
-![purchase_form](static\images\screenshots\purchase_form.png)
-![register_form](static\images\screenshots\register_form.png)
-![CRUD_screen](static\images\screenshots\CRUD_screen.png)
+![main screen](staticfiles\images\screenshots\home_screen.png)
+![product_detail](staticfilesimages\screenshots\product_detail_.png)
+![purchase_form](staticfilesimages\screenshots\purchase_form.png)
+![register_form](staticfiles\images\screenshots\register_form.png)
+![CRUD_screen](staticfiles\images\screenshots\CRUD_screen.png)
 
 ### 2. Responsive Design
 
 Create a responsive and visually appealing user interface that works seamlessly on various devices, including desktops, tablets, and mobile phones. Prioritize a user-friendly experience with clear instructions and intuitive controls.
-
-### 3. Dynamic Interaction
-
-Implement JavaScript to handle the dynamic interaction between the user and the computer. Ensure that the game responds promptly to user input, updates the game state accordingly, and displays the results of each round in an engaging manner.
 
 ### 4. Stylish UI/UX
 
