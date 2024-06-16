@@ -102,23 +102,21 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
-env_path = os.path.join(os.path.dirname(__file__), 'env.py')
-if os.path.exists(env_path):
-    sys.path.insert(0, os.path.dirname(__file__))
-    import env
-    from env import EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
-
+# email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = 'True'
-EMAIL_HOST_USER = env.EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = env.EMAIL_HOST_PASSWORD
+EMAIL_HOST_USER = 'ross.fraser25@gmail.com'
+EMAIL_HOST_PASSWORD = 'nbij ikqj lvqv ehas'
 
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
