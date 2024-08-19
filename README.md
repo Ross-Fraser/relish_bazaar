@@ -1,4 +1,4 @@
-![home_screen](staticfiles\images\screenshots\home_screen.png)
+![home_screen](staticfiles\images\screenshots\home_screen.webp)
 
 # Relish Bazaar - Coffee Shop Website
 
@@ -39,7 +39,7 @@ Ensure the website is accessible to users with disabilities, following accessibi
 
 Entity-Relationship Diagrams (ERD)
 
-![entity-relationship_diagram](staticfiles\images\screenshots\entity-relationship_diagram.png)
+![entity-relationship_diagram](staticfiles\images\screenshots\entity-relationship_diagram.webp)
 
 Entity-Relationship Diagrams (ERDs) played a crucial role in the design process of Relish Bazaar. ERDs help in visualizing the database structure, showing how entities such as Categories, Coffee Origin, Coffee Grind, Coffee size, products and how they  relate to each other. This design step ensures a well-organized database, improving data integrity and efficiency.
 
@@ -57,11 +57,11 @@ User stories were essential in guiding the development process, ensuring that th
 
 ### Screenshots
 
-![main screen](staticfiles\images\screenshots\home_screen.png)
-![product_detail](staticfilesimages\screenshots\product_detail_.png)
-![purchase_form](staticfilesimages\screenshots\purchase_form.png)
-![register_form](staticfiles\images\screenshots\register_form.png)
-![CRUD_screen](staticfiles\images\screenshots\CRUD_screen.png)
+![main screen](staticfiles\images\screenshots\home_screen.webp)
+![product_detail](staticfilesimages\screenshots\product_detail_.webp)
+![purchase_form](staticfilesimages\screenshots\purchase_form.webp)
+![register_form](staticfiles\images\screenshots\register_form.webp)
+![CRUD_screen](staticfiles\images\screenshots\CRUD_screen.webp)
 
 ### 2. Responsive Design
 
@@ -97,8 +97,8 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 #### Testing Screenshots
 
-![lighthouse_mobile](static\images\screenshots\lighthouse_mobile.png)
-![lighthouse_desktop](static\images\screenshots\lighthouse_desktop.png)
+![lighthouse_mobile](static\images\screenshots\lighthouse_mobile.webp)
+![lighthouse_desktop](static\images\screenshots\lighthouse_desktop.webp)
 
 ## Bugs
 
