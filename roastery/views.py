@@ -1,4 +1,6 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
 from django.http import HttpResponseBadRequest
 from django.conf import settings
@@ -100,6 +102,8 @@ def success_page(request):
     return render(request, 'success_page.html')
 
 
+@login_required
+@permission_required('app.add_product', raise_exception=True)
 def create_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -113,12 +117,15 @@ def create_product(request):
     return render(request, 'roastery/product_form.html', {'form': form})
 
 
+@login_required
 def products_list(request):
     products = Product.objects.all()
     return render(request,
                   'roastery/product_list.html', {'products': products})
 
 
+@login_required
+@permission_required('app.change_product', raise_exception=True)
 def update_product(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
     if request.method == 'POST':
@@ -131,6 +138,8 @@ def update_product(request, product_id):
     return render(request, 'roastery/product_form.html', {'form': form})
 
 
+@login_required
+@permission_required('app.delete_product', raise_exception=True)
 def delete_product(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
     if request.method == 'POST':
@@ -138,3 +147,6 @@ def delete_product(request, product_id):
         return redirect('product_list')
     return render(request,
                   'roastery/product_confirm_delete.html', {'product': product})
+    
+def custom_permission_denied_view(request, exception):
+    return render(request, '403.html', status=403)

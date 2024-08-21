@@ -19,4 +19,5 @@ urlpatterns = [
          name="update_product"),
     path("delete/<int:product_id>/", views.delete_product,
          name="delete_product"),
+    path("denied", views.custom_permission_denied_view, name="denied"),
 ]
