@@ -2,6 +2,41 @@
     width: 25%;
 }
 
+.brand-name {
+    color: #F9FAFC;
+    font-family: Chantal Bold Italic, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    align-items: 10%;
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image {
+        border-radius: 10;
+    }
+}
+
 body {
     background-color: #F9FAFC;
 }
