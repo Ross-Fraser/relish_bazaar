@@ -11,13 +11,15 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{% url 'product_detail' product.product_id %}">
+                            <a href="{% url 'product_detail' product.product_id %}" class="country-link">
+                            <div class="image-container">
                                 {% if "placeholder" in product.image.url %}
                                 <img src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}" class="img-fluid">
                                 {% else %}
                                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
                                 {% endif %}
-                                <h2 class="card-title mt-2">{{ product.name }}</h2>
+                            </div>
+                                <h2 class="card-title">{{ product.name|lower|capfirst}}</h2>
                             </a>
                         </div>
                     </div>

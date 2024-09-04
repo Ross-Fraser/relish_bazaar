@@ -6,13 +6,15 @@
     <div class="hero-container">
         <img class="hero-img img-fluid" src="{% static 'images/Relish-hero-image.webp' %}" alt="Hero Image">
     </div>
-    
+
     <div class="content-container">
+        <h1> Coffees of the world </h1>
         <div class="row">
             {% for continent in continent_list %}
             <div class="col-md-4 col-sm-6 col-xs-12 mb-4">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{% url 'origin_products' continent.name %}" class="continent-link">
                         <div class="image-container">
                             {% if "placeholder" in continent.image.url %}
                                 <img class="img-fluid" src="{% static 'images/coffee' %}" alt="{{ continent.name }}">
@@ -20,7 +22,6 @@
                                 <img class="img-fluid" src="{{ continent.image.url }}" alt="{{ continent.name }}">
                             {% endif %}
                         </div>
-                        <a href="{% url 'origin_products' continent.name %}" class="continent-link">
                             <h2 class="card-title">{{ continent.name }} Coffee</h2>
                         </a>
                     </div>
