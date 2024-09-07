@@ -1,13 +1,73 @@
-.brand-img {
-    width: 25%;
+/*---------------------------------------------------Navbar*/
+.navbar-brand {
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-brand .d-flex {
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-logo {
+    width: auto;
+    height: 90px;
+    max-width: 100%;
+    margin-right: 10px;
+}
+
+.brand-name {
+    color: #F9FAFC;
+    font-family: 'Chantal Bold Italic', sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Breadcrumb style */
+.woocommerce-breadcrumb {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* User menu */
+.user-menu {
+    margin-left: auto;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/*---------------------------------------------------Hero image*/
+.hero-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-img {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 3px;
+    border-bottom: 3px solid #333;;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    object-fit: cover;
 }
 
 body {
-    background-color: #F9FAFC;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-container-fluid {
-    padding: 5px, 5px;
+.container-fluid {
+    padding: 0px;
 }
 
 .bg-white {
@@ -27,7 +87,7 @@ container-fluid {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-left: 100%;
+    margin-left: auto;
     display: inline-block;
     margin: 5px;
 }
@@ -47,4 +107,245 @@ container-fluid {
 
 .form {
     padding-left: 20px;
+}
+
+.content-container {
+    padding: 15px;
+}
+
+/*--------------------------------------------------- Card Styles */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.image-container {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    line-height: 0;
+}
+
+.img-fluid {
+    height: auto;
+    display: block;
+}
+
+.continent-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.country-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin: 10px 0;
+}
+
+/*--------------------------------------------------- Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-create {
+    background-color: #28a745;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+  .btn-create:hover {
+    background-color: #218838;
+  }
+  
+  .btn-update {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .btn-update:hover {
+    background-color: #e0a800;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+
+/*--------------------------------------------------- Button Wrapper */
+.btn-wrapper {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+/*--------------------------------------------------- General Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /*--------------------------------------------------- Page Title */
+  .page-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  /*--------------------------------------------------- Product List */
+  .product-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+
+  .product-item:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: #007bff;
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .product-link:hover {
+    text-decoration: underline;
+  }
+
+  /*--------------------------------------------------- Button Group */
+  .btn-group {
+    display: flex;
+    gap: 5px;
+  }
+
+/*---------------------------------------------------Media Queries*/
+@media (max-width: 768px) {
+
+    .hero-container {
+        height: 200px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .hero-img {
+        border-radius: 5px;
+    }
+
+    .brand-logo {
+        height: 60px;
+    }
+
+    .brand-name {
+        font-size: 40px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .product-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-wrapper {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+}
+
+@media (max-width: 576px) {
+    .hero-container {
+        height: 150px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .brand-logo {
+        height: 50px;
+    }
+
+    .brand-name {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-img {
+        border-radius: 5px;
+    }
+
+    .brand-logo {
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    .navbar .dropdown-menu {
+        right: 0;
+        left: auto;
+        text-align: right;
+    }
+
+    .brand-logo {
+        height: 30px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
 }
