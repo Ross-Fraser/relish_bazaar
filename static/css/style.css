@@ -1,15 +1,21 @@
 /*---------------------------------------------------Navbar*/
 .navbar-brand {
-    display: flex;
     align-items: center;
+    width: 100%;
     padding: 0;
     margin: 0;
 }
 
+.navbar-brand .d-flex {
+    align-items: center;
+    justify-content: center;
+}
+
 .brand-logo {
     width: auto;
-    max-width: 90px;
-    height: auto;
+    height: 90px;
+    max-width: 100%;
+    margin-right: 10px;
 }
 
 .brand-name {
@@ -18,7 +24,20 @@
     font-size: 60px;
     font-weight: bold;
     text-align: center;
-    flex: auto;
+}
+
+/* Breadcrumb style */
+.woocommerce-breadcrumb {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* User menu */
+.user-menu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 
 /*---------------------------------------------------Hero image*/
@@ -259,7 +278,11 @@ body {
     }
 
     .brand-logo {
-        max-width: 60px;
+        height: 60px;
+    }
+
+    .brand-name {
+        font-size: 40px;
     }
 
     .btn-group {
@@ -276,6 +299,10 @@ body {
         margin-left: 0;
         margin-top: 10px;
       }
+
+      .row {
+        max-width: 768px
+    }
 }
 
 @media (max-width: 576px) {
@@ -286,6 +313,18 @@ body {
     .card-title {
         font-size: 1rem;
     }
+
+    .brand-logo {
+        height: 50px;
+    }
+
+    .brand-name {
+        font-size: 30px;
+    }
+
+    .row {
+        max-width: 576px
+    }
 }
 
 @media (max-width: 480px) {
@@ -294,7 +333,15 @@ body {
     }
 
     .brand-logo {
-        max-width: 50px;
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .row {
+        max-width: 480px
     }
 }
 
@@ -303,5 +350,17 @@ body {
         right: 0;
         left: auto;
         text-align: right;
+    }
+
+    .brand-logo {
+        height: 30px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .row {
+        max-width: 425px
     }
 }
