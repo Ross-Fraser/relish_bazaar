@@ -40,12 +40,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 
 </head>
 
@@ -53,35 +51,44 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'images/Relish-Logo.webp' %}" alt="Relish Bazaar" class="brand-logo">
-            </a>
-            <h1 class="brand-name d-none d-md-block">Relish Bazaar</h1>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="container-fluid">
+            <!-- Logo and Breadcrumb -->
+            <div class="navbar-brand">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/Relish-Logo.webp' %}" alt="Relish Bazaar" class="brand-logo">
+                </a>
+                <h1 class="brand-name d-none d-md-block">Relish Bazaar</h1>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <!-- Breadcrumb navigation below the logo -->
+                <nav class="woocommerce-breadcrumb mt-2" aria-label="Breadcrumb">
+                    <ol class="breadcrumb bg-white mb-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a>&nbsp;/&nbsp;</li>
+                        {% block breadcrumbs %}
+                        {% endblock breadcrumbs %}
+                    </ol>
+                </nav>
+            </div>
+    
+            <!-- User Menu -->
+            <div class="user-menu ms-auto">
+                <ul class="navbar-nav d-flex align-items-center">
                     {% if user.is_authenticated and user.is_staff %}
                     <li class="nav-item">
-                        <a href="{% url 'manage_products' %}" class="btn btn-outline-primary nav-link">
-                        Manage Products
+                        <a href="{% url 'manage_products' %}" class="btn text-white">
+                            Manage Products
                         </a>
                     </li>
                     {% endif %}
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'logout' %}" class="nav-link"><i class="fa fa-user"></i> Logout</a>
+                        <a href="{% url 'logout' %}" class="nav-link text-dark"><i class="fa fa-user"></i> Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-user"></i>
+                        <a href="#loginRegisterOptions" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a href="{% url 'login' %}" class="dropdown-item">Login</a></li>
                             <li><a href="{% url 'register' %}" class="dropdown-item">Register</a></li>
                         </ul>
@@ -90,7 +97,7 @@
                 </ul>
             </div>
         </div>
-    </nav>  
+    </nav>        
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}

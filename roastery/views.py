@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
-from django.http import HttpResponseBadRequest
 from django.conf import settings
-from .forms import EnquiryForm, ProductForm
+from django.http import HttpResponseBadRequest
+from .forms import PurchaseEnquiryForm, ProductForm
 from django.views import generic
-from .models import Product, CONTINENT_CHOICES, GRIND_CHOICES
+from .models import Product, CONTINENT_CHOICES
 
 
 def index(request):
@@ -37,27 +36,35 @@ def origin_products(request, continent_name):
                            name in CONTINENT_CHOICES if name ==
                            continent_name), None)
     if continent_index is None:
-        # Handle the case where the continent name is not found
-        return render(request, 'origin_products.html', {'products': [],
-                      'continent_name': continent_name})
+        products = []
+    else:
+        products = Product.objects.filter(origin_id__continent=continent_index)
 
-    products = Product.objects.filter(origin_id__continent=continent_index)
-    return render(request, 'origin_products.html', {'products': products,
-                  'continent_name': continent_name})
+    return render(request, 'origin_products.html', {
+        'products': products,
+        'continent_name': continent_name
+    })
 
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
-    return render(request, 'product_detail.html', {'product': product})
+
+    context = {
+        'product': product,
+        'continent_name': product.origin_id.get_continent_display(),
+        'country_name': product.origin_id.get_country_display(),
+    }
+
+    return render(request, 'product_detail.html', context)
 
 
 def purchase_form(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
 
     if request.method == 'POST':
-        form = EnquiryForm(request.POST)
+        form = PurchaseEnquiryForm(request.POST)
         if form.is_valid():
-            # Process form data
+            # Send enquiry email to the store owner
             send_mail(
                 subject=f'I would like to purchase a bag of '
                         f'{form.cleaned_data["product_name"]}',
@@ -91,11 +98,19 @@ def purchase_form(request, product_id):
 
             return redirect('success_page')
     else:
-        form = EnquiryForm(initial={'product_name': product.name,
-                           'product_price': product.price})
+        form = PurchaseEnquiryForm(initial={
+            'product_name': product.name,
+            'product_price': product.price
+        })
 
-    return render(request, 'purchase_form.html', {'form': form,
-                  'product': product})
+        context = {
+            'form': form,
+            'product': product,
+            'continent_name': product.origin_id.get_continent_display(),
+            'country_name': product.origin_id.get_country_display(),
+        }
+
+    return render(request, 'purchase_form.html', context)
 
 
 def success_page(request):

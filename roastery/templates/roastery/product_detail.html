@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
+{% block breadcrumbs %}
+<a href="{% url 'origin_products' continent_name=continent_name %}">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;
+<a href="{% url 'product_detail' product_id=product.product_id %}">{{ product.name }}</a>
+{% endblock breadcrumbs %}
 
+
+{% block content %}
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-6">

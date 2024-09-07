@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static%}
 
+{% block breadcrumbs %}
+<a href="{% url 'origin_products' continent_name=continent_name %}">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;
+<a href="{% url 'product_detail' product_id=product.product_id %}">{{ product.name }}</a>
+{% endblock breadcrumbs %}
+
 {% block content %}
   <h2>{{ form.instance.pk|yesno:"Update Product,Create Product" }}</h2>
   <form method="post" enctype="multipart/form-data" class="my-form">
