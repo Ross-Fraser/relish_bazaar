@@ -2,6 +2,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.http import HttpResponseBadRequest
 from .forms import PurchaseEnquiryForm, ProductForm
 from django.views import generic
@@ -31,15 +33,18 @@ class ProductList(generic.ListView):
     paginate_by = 6
 
 
-def origin_products(request, continent_name):
-    continent_index = next((index for index,
-                           name in CONTINENT_CHOICES if name ==
-                           continent_name), None)
+def origin_products(request, continent_name=None):
+    
+    if not continent_name:
+        return render(request, 'origin_products.html', {
+        })
+    
+    continent_index = next((index for index, name in CONTINENT_CHOICES if name == continent_name), None)
     if continent_index is None:
         products = []
     else:
         products = Product.objects.filter(origin_id__continent=continent_index)
-
+    
     return render(request, 'origin_products.html', {
         'products': products,
         'continent_name': continent_name
@@ -48,11 +53,13 @@ def origin_products(request, continent_name):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
+    success_message = request.GET.get('success_message')
 
     context = {
         'product': product,
         'continent_name': product.origin_id.get_continent_display(),
         'country_name': product.origin_id.get_country_display(),
+        'success_message': success_message
     }
 
     return render(request, 'product_detail.html', context)
@@ -92,11 +99,15 @@ def purchase_form(request, product_id):
                     f'Grind: {form.cleaned_data["grind"]}\n'
                     'We will contact you shortly with more information.'
                 ),
-                from_email='yourstore@example.com',
+                from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[form.cleaned_data["email_address"]],
             )
 
-            return redirect('success_page')
+            success_message = "Thank you for your enquiry. We will get back " \
+                              "to you soon."
+            return HttpResponseRedirect(
+                f'{reverse("product_detail", args=[product_id])}?success_message={success_message}'
+            )
     else:
         form = PurchaseEnquiryForm(initial={
             'product_name': product.name,
@@ -111,10 +122,6 @@ def purchase_form(request, product_id):
         }
 
     return render(request, 'purchase_form.html', context)
-
-
-def success_page(request):
-    return render(request, 'success_page.html')
 
 
 @login_required

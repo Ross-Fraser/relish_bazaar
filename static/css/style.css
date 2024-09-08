@@ -33,11 +33,32 @@
     margin-top: 5px;
 }
 
+.breadcrumb {
+    padding-left: revert !important;
+}
+
 /* User menu */
 .user-menu {
     margin-left: auto;
     display: flex;
     align-items: center;
+}
+
+.dropdown-menu {
+    min-width: 100px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.navbar .dropdown-menu { 
+    right: 0;
+    left: auto;
+    text-align: right;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 80% !important;
 }
 
 /*---------------------------------------------------Hero image*/
@@ -67,6 +88,7 @@ body {
 
 .container-fluid {
     padding: 0px;
+    max-width: 100%;
 }
 
 .bg-white {
@@ -171,35 +193,35 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .btn-create {
+}
+
+.btn-create {
     background-color: #28a745;
     margin-bottom: 5px;
     color: white;
-  }
+}
   
-  .btn-create:hover {
+.btn-create:hover {
     background-color: #218838;
-  }
+}
   
-  .btn-update {
+.btn-update {
     background-color: #ffc107;
     color: black;
-  }
+}
   
-  .btn-update:hover {
+.btn-update:hover {
     background-color: #e0a800;
-  }
+}
   
-  .btn-delete {
+.btn-delete {
     background-color: #dc3545;
     color: white;
-  }
+}
   
-  .btn-delete:hover {
+.btn-delete:hover {
     background-color: #c82333;
-  }
+}
 
 /*--------------------------------------------------- Button Wrapper */
 .btn-wrapper {
@@ -210,57 +232,61 @@ body {
     align-items: center;
 }
 
-/*--------------------------------------------------- General Container */
+/*--------------------------------------------------- General */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-  }
+}
+
+.row {
+    max-width: 100%;
+}
 
   /*--------------------------------------------------- Page Title */
-  .page-title {
+.page-title {
     font-size: 2em;
     margin-bottom: 20px;
     color: #333;
-  }
+}
 
   /*--------------------------------------------------- Product List */
-  .product-list {
+.product-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .product-item {
+.product-item {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 10px;
     background-color: #f9f9f9;
     transition: background-color 0.3s, box-shadow 0.3s;
-  }
+}
 
-  .product-item:hover {
+.product-item:hover {
     background-color: #f1f1f1;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
+}
 
-  .product-link {
+.product-link {
     text-decoration: none;
     color: #007bff;
     flex: 1;
     margin-right: 10px;
-  }
+}
   
-  .product-link:hover {
+.product-link:hover {
     text-decoration: underline;
-  }
+}
 
   /*--------------------------------------------------- Button Group */
-  .btn-group {
+.btn-group {
     display: flex;
     gap: 5px;
-  }
+}
 
 /*---------------------------------------------------Media Queries*/
 @media (max-width: 768px) {
@@ -298,10 +324,11 @@ body {
     .btn-wrapper {
         margin-left: 0;
         margin-top: 10px;
-      }
+    }
 
-      .row {
-        max-width: 768px
+    .dropdown-menu {
+        max-width: 150px;
+        font-size: 0.8rem;
     }
 }
 
@@ -321,10 +348,6 @@ body {
     .brand-name {
         font-size: 30px;
     }
-
-    .row {
-        max-width: 576px
-    }
 }
 
 @media (max-width: 480px) {
@@ -338,10 +361,6 @@ body {
 
     .brand-name {
         font-size: 20px;
-    }
-
-    .row {
-        max-width: 480px
     }
 }
 
@@ -358,9 +377,5 @@ body {
 
     .brand-name {
         font-size: 20px;
-    }
-
-    .row {
-        max-width: 425px
     }
 }

@@ -3,7 +3,7 @@ from django import forms
 from .models import Product, GRIND_CHOICES
 
 
-class EnquiryForm(forms.Form):
+class PurchaseEnquiryForm(forms.Form):
     product_name = forms.CharField(widget=forms.HiddenInput())
     product_price = forms.CharField(widget=forms.HiddenInput())
     name = forms.CharField(max_length=100)
