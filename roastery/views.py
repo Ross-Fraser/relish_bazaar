@@ -141,16 +141,11 @@ def create_product(request):
     
     return render(request, 'roastery/product_form.html', {'form': form})
 
-
-
-
 @login_required
 def products_list(request):
     products = Product.objects.all()
     success_message = request.GET.get('success_message', None)
     return render(request, 'roastery/product_list.html', {'products': products, 'success_message': success_message})
-
-
 
 @login_required
 @permission_required('app.change_product', raise_exception=True)

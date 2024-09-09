@@ -11,17 +11,30 @@
 {% endblock breadcrumbs %}
 
 {% block content %}
-<h2>{% if form.instance.pk %}Update Product{% else %}Create Product{% endif %}</h2>
-{% if success_message %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{ success_message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{% if form.instance.pk %}Update Product{% else %}Create Product{% endif %}</h2>
+                </div>
+                <div class="card-body">
+                    {% if success_message %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{ success_message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data" class="my-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+                        <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-{% endif %}
-<form method="post" enctype="multipart/form-data" class="my-form">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
-</form>
-<a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+</div>
 {% endblock content %}
+
