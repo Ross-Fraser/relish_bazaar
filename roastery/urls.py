@@ -16,7 +16,7 @@ urlpatterns = [
     path("product", views.products_list, name="product_list"),
     path("update/<int:product_id>/", views.update_product,
          name="update_product"),
-    path("delete/<int:product_id>/", views.delete_product,
+    path("delete-product/<int:product_id>/", views.delete_product,
          name="delete_product"),
     path("denied", views.custom_permission_denied_view, name="denied"),
 ]

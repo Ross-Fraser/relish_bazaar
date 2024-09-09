@@ -2,16 +2,26 @@
 {% load static%}
 
 {% block breadcrumbs %}
-<a href="{% url 'origin_products' continent_name=continent_name %}">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;
-<a href="{% url 'product_detail' product_id=product.product_id %}">{{ product.name }}</a>
+  <a href="{% url 'manage_products' %}">Manage Products</a>&nbsp;/&nbsp;
+  {% if form.instance.pk %}
+    <a href="{% url 'update_product' product_id=form.instance.pk %}">Update Product</a>
+  {% else %}
+    <a href="{% url 'create_product' %}">Create Product</a>
+  {% endif %}
 {% endblock breadcrumbs %}
 
 {% block content %}
-  <h2>{{ form.instance.pk|yesno:"Update Product,Create Product" }}</h2>
-  <form method="post" enctype="multipart/form-data" class="my-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">{{ form.instance.pk|yesno:"Update,Create" }}</button>
-  </form>
-  <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+<h2>{% if form.instance.pk %}Update Product{% else %}Create Product{% endif %}</h2>
+{% if success_message %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ success_message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
+<form method="post" enctype="multipart/form-data" class="my-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+</form>
+<a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
 {% endblock content %}

@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.urls import reverse
 from django.http import HttpResponseBadRequest
 from .forms import PurchaseEnquiryForm, ProductForm
@@ -123,7 +124,6 @@ def purchase_form(request, product_id):
 
     return render(request, 'purchase_form.html', context)
 
-
 @login_required
 @permission_required('app.add_product', raise_exception=True)
 def create_product(request):
@@ -131,19 +131,25 @@ def create_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('product_list')
+            # Redirect to manage_products with a success message
+            return redirect(f'{reverse("manage_products")}?success_message=Product created successfully!')
         else:
-            return HttpResponseBadRequest("Form is not valid")
+            # Allow form errors to show on the template
+            return render(request, 'roastery/product_form.html', {'form': form})
     else:
         form = ProductForm()
+    
     return render(request, 'roastery/product_form.html', {'form': form})
+
+
 
 
 @login_required
 def products_list(request):
     products = Product.objects.all()
-    return render(request,
-                  'roastery/product_list.html', {'products': products})
+    success_message = request.GET.get('success_message', None)
+    return render(request, 'roastery/product_list.html', {'products': products, 'success_message': success_message})
+
 
 
 @login_required
@@ -154,11 +160,14 @@ def update_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('product_list')
+            return redirect(f'{reverse("manage_products")}?success_message=Product updated successfully!')
+
     else:
         form = ProductForm(instance=product)
-    return render(request, 'roastery/product_form.html', {'form': form})
 
+    success_message = request.GET.get('success_message')
+
+    return render(request, 'roastery/product_form.html', {'form': form, 'success_message': success_message})
 
 @login_required
 @permission_required('app.delete_product', raise_exception=True)
@@ -166,9 +175,9 @@ def delete_product(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
     if request.method == 'POST':
         product.delete()
-        return redirect('product_list')
-    return render(request,
-                  'roastery/product_confirm_delete.html', {'product': product})
+        return redirect(f'{reverse("manage_products")}?success_message=Product deleted successfully!')
+    else:
+        return JsonResponse({'success': False}, status=400)
     
-def custom_permission_denied_view(request, exception):
+def custom_permission_denied_view(request):
     return render(request, '403.html', status=403)
