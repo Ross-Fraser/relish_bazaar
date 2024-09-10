@@ -38,7 +38,7 @@
                 <a href="{% url 'product_detail' product.product_id %}" class="product-link">{{ product.name }}</a>
                 <div class="btn-wrapper">
                     <a href="{% url 'update_product' product.product_id %}" class="btn btn-update btn-sm">Update</a>
-                    <button onclick="showDeleteConfirmation({{ product.product_id }})" class="btn btn-delete btn-sm">Delete</button>
+                    <button onclick="showDeleteConfirmation(event)({{ product.product_id }})" class="btn btn-delete btn-sm">Delete</button>
                 </div>
             </li>
         {% endfor %}
