@@ -5,7 +5,6 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.urls import reverse
-from django.http import HttpResponseBadRequest
 from .forms import PurchaseEnquiryForm, ProductForm
 from django.views import generic
 from .models import Product, CONTINENT_CHOICES
