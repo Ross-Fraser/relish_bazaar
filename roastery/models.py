@@ -115,7 +115,7 @@ class Product(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     currency = models.CharField(max_length=3)
     image = CloudinaryField('image')
     created = models.DateTimeField(auto_now_add=True)
