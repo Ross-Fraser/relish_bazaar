@@ -11,20 +11,28 @@ from .models import Product, CONTINENT_CHOICES
 
 
 def index(request):
-    continent_list = [
-        {'name': 'African', 'image': get_continent_image(0)},
-        {'name': 'Asian', 'image': get_continent_image(1)},
-        {'name': 'American', 'image': get_continent_image(2)},
+    continents = [
+        {'name': 'African', 'continent_index': 0},
+        {'name': 'Asian', 'continent_index': 1},
+        {'name': 'American', 'continent_index': 2},
     ]
+    
+    continent_list = []
+    for continent in continents:
+        image = get_continent_image(continent['continent_index'])
+        continent_list.append({'name': continent['name'], 'image': image})
+
     return render(request, 'index.html', {'continent_list': continent_list})
 
 
 def get_continent_image(continent_index):
-    try:
-        return Product.objects.filter(origin_id__continent=continent_index).first().image
-    except AttributeError:
-        # Handle the case where no products are found for the continent
-        return None
+    continent_images = {
+        0: 'Relish-Coffee-Africa-Selection-300x300.webp',
+        1: 'Relish-Coffee-Asian-Selection-300x300.webp',
+        2: 'Relish-Coffee-American-Selection-300x300.webp'
+    }
+    
+    return continent_images.get(continent_index,)
 
 
 class ProductList(generic.ListView):
