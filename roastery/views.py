@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.urls import reverse
 from .forms import PurchaseEnquiryForm, ProductForm
 from django.views import generic
-from .models import Product, CONTINENT_CHOICES
+from .models import Product, CONTINENT_CHOICES, CURRENCY_CHOICES, CURRENCY_SYMBOLS
 
 
 def index(request):
@@ -61,16 +61,18 @@ def origin_products(request, continent_name=None):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
+    currency_symbol = product.get_currency_symbol()
     success_message = request.GET.get('success_message')
 
     context = {
         'product': product,
         'continent_name': product.origin_id.get_continent_display(),
         'country_name': product.origin_id.get_country_display(),
-        'success_message': success_message
+        'currency_symbol': currency_symbol,
+        'success_message': success_message,
     }
-
     return render(request, 'product_detail.html', context)
+
 
 
 def purchase_form(request, product_id):

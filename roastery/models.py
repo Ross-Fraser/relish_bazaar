@@ -45,6 +45,95 @@ REGION_CHOICES = (
     (7, "-")
 )
 
+CURRENCY_CHOICES = (
+    ("USD", "USD - US Dollar"),
+    ("EUR", "EUR - Euro"),
+    ("GBP", "GBP - British Pound Sterling"),
+    ("JPY", "JPY - Japanese Yen"),
+    ("AUD", "AUD - Australian Dollar"),
+    ("CAD", "CAD - Canadian Dollar"),
+    ("CHF", "CHF - Swiss Franc"),
+    ("CNY", "CNY - Chinese Yuan"),
+    ("SEK", "SEK - Swedish Krona"),
+    ("NZD", "NZD - New Zealand Dollar"),
+    ("MXN", "MXN - Mexican Peso"),
+    ("SGD", "SGD - Singapore Dollar"),
+    ("HKD", "HKD - Hong Kong Dollar"),
+    ("NOK", "NOK - Norwegian Krone"),
+    ("KRW", "KRW - South Korean Won"),
+    ("TRY", "TRY - Turkish Lira"),
+    ("INR", "INR - Indian Rupee"),
+    ("RUB", "RUB - Russian Ruble"),
+    ("ZAR", "ZAR - South African Rand"),
+    ("BRL", "BRL - Brazilian Real"),
+    ("ILS", "ILS - Israeli New Shekel"),
+    ("PLN", "PLN - Polish Zloty"),
+    ("THB", "THB - Thai Baht"),
+    ("DKK", "DKK - Danish Krone"),
+    ("HUF", "HUF - Hungarian Forint"),
+    ("CZK", "CZK - Czech Koruna"),
+    ("CLP", "CLP - Chilean Peso"),
+    ("COP", "COP - Colombian Peso"),
+    ("PEN", "PEN - Peruvian Sol"),
+    ("ARS", "ARS - Argentine Peso"),
+    ("MYR", "MYR - Malaysian Ringgit"),
+    ("PHP", "PHP - Philippine Peso"),
+    ("PKR", "PKR - Pakistani Rupee"),
+    ("MAD", "MAD - Moroccan Dirham"),
+    ("AED", "AED - United Arab Emirates Dirham"),
+    ("BHD", "BHD - Bahraini Dinar"),
+    ("KWD", "KWD - Kuwaiti Dinar"),
+    ("OMR", "OMR - Omani Rial"),
+    ("JOD", "JOD - Jordanian Dinar"),
+    ("DZD", "DZD - Algerian Dinar"),
+    ("TND", "TND - Tunisian Dinar"),
+)
+
+CURRENCY_SYMBOLS = (
+    ("USD", "$"),
+    ("EUR", "€"),
+    ("GBP", "£"),
+    ("JPY", "¥"),
+    ("AUD", "A$"),
+    ("CAD", "C$"),
+    ("CHF", "CHF"),
+    ("CNY", "¥"),
+    ("SEK", "kr"),
+    ("NZD", "NZ$"),
+    ("MXN", "$"),
+    ("SGD", "S$"),
+    ("HKD", "HK$"),
+    ("NOK", "kr"),
+    ("KRW", "₩"),
+    ("TRY", "₺"),
+    ("INR", "₹"),
+    ("RUB", "₽"),
+    ("ZAR", "R"),
+    ("BRL", "R$"),
+    ("ILS", "₪"),
+    ("PLN", "zł"),
+    ("THB", "฿"),
+    ("DKK", "kr"),
+    ("HUF", "Ft"),
+    ("CZK", "Kč"),
+    ("CLP", "$"),
+    ("COP", "$"),
+    ("PEN", "S/"),
+    ("ARS", "$"),
+    ("MYR", "RM"),
+    ("PHP", "₱"),
+    ("PKR", "₨"),
+    ("MAD", "د.م."),
+    ("AED", "د.إ"),
+    ("BHD", "ب.د."),
+    ("KWD", "د.ك"),
+    ("OMR", "ر.ع."),
+    ("JOD", "د.أ"),
+    ("DZD", "د.ج"),
+    ("TND", "د.ت"),
+)
+
+
 
 class Category(models.Model):
     category_id = models.BigAutoField(primary_key=True)
@@ -109,6 +198,14 @@ class Product(models.Model):
     manufacturer = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
+    
+    def get_currency_symbol(self):
+        currency_dict = dict(CURRENCY_CHOICES)
+        symbol = next((symbol for code, symbol in CURRENCY_SYMBOLS if code == self.currency), '')
+        return symbol
+
+    def get_currency_display(self):
+        return self.get_currency_symbol()
 
     def save(self, *args, **kwargs):
         if not self.slug or self.slug.strip() == "":
@@ -116,7 +213,7 @@ class Product(models.Model):
         super().save(*args, **kwargs)
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    currency = models.CharField(max_length=3)
+    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default='GBP')
     image = CloudinaryField('image')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
