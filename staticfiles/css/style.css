@@ -26,19 +26,48 @@
     text-align: center;
 }
 
-/* Breadcrumb style */
+/*---------------------------------------------------Breadcrumb*/
 .woocommerce-breadcrumb {
     font-size: 0.85rem;
     text-align: center;
     margin-top: 5px;
+    color: #FFFFFF;
 }
 
-/* User menu */
+.breadcrumb {
+    padding-left: revert !important;
+}
+
+.breadcrumbs-link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.breadcrumbs-link:hover {
+    text-decoration: underline;
+}
+/*---------------------------------------------------User Menu*/
 .user-menu {
     margin-left: auto;
-    margin-right: 5px;
     display: flex;
     align-items: center;
+}
+
+.dropdown-menu {
+    min-width: 100px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.navbar .dropdown-menu { 
+    right: 0;
+    left: auto;
+    text-align: right;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 80% !important;
 }
 
 /*---------------------------------------------------Hero image*/
@@ -49,17 +78,18 @@
 }
 
 .hero-img {
-    margin-top: 5px;
     margin-bottom: 10px;
     width: 100%;
     height: auto;
     max-width: 100%;
     border-radius: 3px;
+    border-top: 3px solid #333;;
     border-bottom: 3px solid #333;;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
     object-fit: cover;
 }
 
+/*---------------------------------------------------General*/
 body {
     margin: 0;
     padding: 0;
@@ -68,6 +98,7 @@ body {
 
 .container-fluid {
     padding: 0px;
+    max-width: 100%;
 }
 
 .bg-white {
@@ -130,7 +161,6 @@ body {
 
 .card-body {
     padding: 15px;
-    text-align: center;
 }
 
 .image-container {
@@ -159,6 +189,40 @@ body {
     font-size: 1.25rem;
     margin: 10px 0;
 }
+/*---------------------------------------------------Form Styles*/
+.product_form 
+{
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*--------------------------------------------------- Form Errors */
+.is-invalid {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .25);
+}
+
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875em; /* Adjust size as needed */
+}
+
+.field-error {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
 
 /*--------------------------------------------------- Button Styles */
 .btn {
@@ -172,35 +236,35 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .btn-create {
+}
+
+.btn-create {
     background-color: #28a745;
     margin-bottom: 5px;
     color: white;
-  }
+}
   
-  .btn-create:hover {
+.btn-create:hover {
     background-color: #218838;
-  }
+}
   
-  .btn-update {
+.btn-update {
     background-color: #ffc107;
     color: black;
-  }
+}
   
-  .btn-update:hover {
+.btn-update:hover {
     background-color: #e0a800;
-  }
+}
   
-  .btn-delete {
+.btn-delete {
     background-color: #dc3545;
     color: white;
-  }
+}
   
-  .btn-delete:hover {
+.btn-delete:hover {
     background-color: #c82333;
-  }
+}
 
 /*--------------------------------------------------- Button Wrapper */
 .btn-wrapper {
@@ -211,57 +275,61 @@ body {
     align-items: center;
 }
 
-/*--------------------------------------------------- General Container */
+/*--------------------------------------------------- General */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-  }
+}
 
-  /*--------------------------------------------------- Page Title */
-  .page-title {
+.row {
+    max-width: 100%;
+}
+
+/*--------------------------------------------------- Page Title */
+.page-title {
     font-size: 2em;
     margin-bottom: 20px;
     color: #333;
-  }
+}
 
-  /*--------------------------------------------------- Product List */
-  .product-list {
+/*--------------------------------------------------- Product List */
+.product-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .product-item {
+.product-item {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 10px;
     background-color: #f9f9f9;
     transition: background-color 0.3s, box-shadow 0.3s;
-  }
+}
 
-  .product-item:hover {
+.product-item:hover {
     background-color: #f1f1f1;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
+}
 
-  .product-link {
+.product-link {
     text-decoration: none;
     color: #007bff;
     flex: 1;
     margin-right: 10px;
-  }
+}
   
-  .product-link:hover {
+.product-link:hover {
     text-decoration: underline;
-  }
+}
 
-  /*--------------------------------------------------- Button Group */
-  .btn-group {
+/*--------------------------------------------------- Button Group */
+.btn-group {
     display: flex;
     gap: 5px;
-  }
+}
 
 /*---------------------------------------------------Media Queries*/
 @media (max-width: 768px) {
@@ -299,7 +367,12 @@ body {
     .btn-wrapper {
         margin-left: 0;
         margin-top: 10px;
-      }
+    }
+
+    .dropdown-menu {
+        max-width: 150px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 576px) {
