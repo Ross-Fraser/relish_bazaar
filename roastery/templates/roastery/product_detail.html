@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block breadcrumbs %}
-<a href="{% url 'origin_products' continent_name=continent_name %}">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;
-<a href="{% url 'product_detail' product_id=product.product_id %}">{{ product.name }}</a>
+<a href="{% url 'origin_products' continent_name=continent_name %}"class="breadcrumbs-link">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;
+<a href="{% url 'product_detail' product_id=product.product_id %}"class="breadcrumbs-link">{{ product.name }}</a>
 {% endblock breadcrumbs %}
 
 
@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <h1>{{ product.name }}</h1>
             <p>{{ product.description | safe }}</p>
-            <p><strong>Price:</strong> &pound;{{ product.price }}</p>
+            <p>Price: {{ product.get_currency_symbol }}{{ product.price }}</p>
             <form action="{% url 'purchase_form' product.product_id %}" method="get">
                 <button type="submit">Purchase</button>
             </form>

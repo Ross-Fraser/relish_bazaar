@@ -31,12 +31,21 @@
     font-size: 0.85rem;
     text-align: center;
     margin-top: 5px;
+    color: #FFFFFF;
 }
 
 .breadcrumb {
     padding-left: revert !important;
 }
 
+.breadcrumbs-link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.breadcrumbs-link:hover {
+    text-decoration: underline;
+}
 /*---------------------------------------------------User Menu*/
 .user-menu {
     margin-left: auto;
