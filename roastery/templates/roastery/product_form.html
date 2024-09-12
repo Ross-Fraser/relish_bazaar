@@ -3,11 +3,11 @@
 {% load custom_filters %}
 
 {% block breadcrumbs %}
-  <a href="{% url 'manage_products' %}"class="breadcrumbs-link">Manage Products</a>&nbsp;/&nbsp;
+  <li><a href="{% url 'manage_products' %}" class="breadcrumbs-link">Manage Products</a>&nbsp;/&nbsp;</li>
   {% if form.instance.pk %}
-    <a href="{% url 'update_product' product_id=form.instance.pk %}"class="breadcrumbs-link">Update Product</a>
+    <li><a href="{% url 'update_product' product_id=form.instance.pk %}" class="breadcrumbs-link">Update Product</a></li>
   {% else %}
-    <a href="{% url 'create_product' %}">Create Product</a>
+    <li><a href="{% url 'create_product' %}">Create Product</a></li>
   {% endif %}
 {% endblock breadcrumbs %}
 

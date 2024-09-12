@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block breadcrumbs %}
-<a href="{% url 'origin_products' continent_name=continent_name %}"class="breadcrumbs-link">{{ continent_name }} Coffee</a>&nbsp;&nbsp;
+<li><a href="{% url 'origin_products' continent_name='continent_name' %}" class="breadcrumbs-link">{{ continent_name }} Coffee</a></li>
 {% endblock breadcrumbs %}
 
 {% block content %}

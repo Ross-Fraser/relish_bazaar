@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block breadcrumbs %}
-<a href="{% url 'origin_products' continent_name=continent_name %}"class="breadcrumbs-link">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;
-<a href="{% url 'product_detail' product_id=product.product_id %}"class="breadcrumbs-link">{{ product.name }}</a>&nbsp;/&nbsp;
-<a href="{% url 'purchase_form' product_id=product.product_id %}"class="breadcrumbs-link">Purchase Enquiry</a>
+<li><a href="{% url 'origin_products' continent_name=continent_name %}" class="breadcrumbs-link">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'product_detail' product_id=product.product_id %}" class="breadcrumbs-link">{{ product.name }}</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'purchase_form' product_id=product.product_id %}" class="breadcrumbs-link">Purchase Enquiry</a></li>
 {% endblock breadcrumbs %}
 
 {% block content %}
