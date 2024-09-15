@@ -2,8 +2,6 @@
 {% load static %}
 
 {% block breadcrumbs%}
-<li><a href="{% url 'home' %}" class="breadcrumbs-link">Home</a></li>
-<li><a href="{% url 'products' %}" class="breadcrumbs-link">Products</a></li>
 <li class="active">Shopping Bag</li>
 {% endblock %}
 
@@ -45,5 +43,5 @@
 </table>
 
 <h3>Total: £{{ total_price }}</h3>
-<a href="{% url 'checkout:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+<a href="" class="btn btn-success">Proceed to Checkout</a>
 {% endblock %}
