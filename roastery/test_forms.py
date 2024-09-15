@@ -3,15 +3,16 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django import forms  # Import the forms module from Django
 import os
 from .forms import PurchaseEnquiryForm, ProductForm
-from .models import Product, GRIND_CHOICES, Category, CoffeeOrigin, CoffeeGrind, CoffeeSize
+from .models import GRIND_CHOICES, Category, CoffeeOrigin, \
+CoffeeGrind, CoffeeSize
 
 
 class PurchaseEnquiryFormTest(TestCase):
 
     def test_valid_form(self):
         form_data = {
-            'product_name': (widget:=forms.HiddenInput()),
-            'product_price': (widget:=forms.HiddenInput()),
+            'product_name': (widget := forms.HiddenInput()),
+            'product_price': (widget := forms.HiddenInput()),
             'name': 'John Doe',
             'address': '123 Main St',
             'contact_number': '+1234567890',

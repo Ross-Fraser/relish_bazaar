@@ -158,7 +158,9 @@ class CoffeeOrigin(models.Model):
         return dict(REGION_CHOICES).get(self.region)
 
     def __str__(self):
-        return f"{self.get_continent_display()}, {self.get_country_display()}, {self.get_region_display()}"
+        return f"{self.get_continent_display()},"
+        f"{self.get_country_display()},"
+        f"{self.get_region_display()}"
 
 
 class CoffeeGrind(models.Model):
@@ -197,10 +199,11 @@ class Product(models.Model):
     manufacturer = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
-    
+
     def get_currency_symbol(self):
         currency_dict = dict(CURRENCY_CHOICES)
-        symbol = next((symbol for code, symbol in CURRENCY_SYMBOLS if code == self.currency), '')
+        symbol = next((symbol for code, symbol in CURRENCY_SYMBOLS
+                      if code == self.currency), '')
         return symbol
 
     def get_currency_display(self):
@@ -212,7 +215,8 @@ class Product(models.Model):
         super().save(*args, **kwargs)
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default='GBP')
+    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES,
+                                default='GBP')
     image = CloudinaryField('image')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
