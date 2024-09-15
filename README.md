@@ -87,7 +87,8 @@ User authentication
 Enquiry processing
 Menu item management
 Code Validation
-PEP8
+
+The test results can be seen in the TESTING.md file.
 
 All Python code was validated against the PEP8 style guide to maintain readability and consistency. PEP8 compliance helps in keeping the codebase clean and manageable.
 
