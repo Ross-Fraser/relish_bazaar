@@ -58,10 +58,10 @@ User stories were essential in guiding the development process, ensuring that th
 ### Screenshots
 
 ![main screen](staticfiles/images/screenshots/home_screen.webp)
-![product_detail](staticfiles/images/screenshots/product_detail_.webp)
+![product_detail](staticfiles/images/screenshots/product_detail.webp)
 ![purchase_form](staticfiles/images/screenshots/purchase_form.webp)
 ![register_form](staticfiles/images/screenshots/register_form.webp)
-![CRUD_screen](staticfiles/images/screenshots/CRUD_screen.webp)
+![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
 
 ### 2. Responsive Design
 
@@ -100,8 +100,8 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 #### Testing Screenshots
 
-![lighthouse_mobile](static/images/screenshots/lighthouse_mobile.webp)
-![lighthouse_desktop](static/images/screenshots/lighthouse_desktop.webp)
+![lighthouse_mobile](staticfiles/images/screenshots/lighthouse_mobile.webp)
+![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.webp)
 
 ## Bugs
 
@@ -144,3 +144,10 @@ We welcome contributions to improve Relish Bazaar! Please fork the repository an
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Credit
+
+Code Institute for template
+Code Institute for the deployment terminal.
+PEP8 Validator for code validation.
+3wSchools.com for breadcrumbs and permissions
