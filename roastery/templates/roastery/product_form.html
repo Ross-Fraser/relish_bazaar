@@ -20,10 +20,11 @@
                     <h2>{% if form.instance.pk %}Update Product{% else %}Create Product{% endif %}</h2>
                 </div>
                 <div class="card-body">
-                    {% if success_message %}
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>{{ success_message }}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {% if messages %}
+                        <div class="alert alert-success">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
                         </div>
                     {% endif %}
                     <form method="post" enctype="multipart/form-data" class="my-form">
@@ -67,7 +68,7 @@
                         <button type="submit" class="btn btn-primary">
                             {% if form.instance.pk %}Update{% else %}Create{% endif %}
                         </button>
-                        <a href="{% url 'product_list' %}" class="btn btn-secondary">Cancel</a>
+                        <a href="{% url 'products_list' %}" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
