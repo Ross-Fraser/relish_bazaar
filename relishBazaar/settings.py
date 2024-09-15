@@ -32,7 +32,7 @@ MEDIA_URL = '/media/'
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'roastery',
     'accounts',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'accounts', 'templates', 'registration'),
             os.path.join(BASE_DIR, 'roastery', 'templates', 'roastery'),
+            os.path.join(BASE_DIR, 'bag', 'templates', 'bag'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -91,6 +93,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bag.context_processors.bag_items_count',
             ],
         },
     },
