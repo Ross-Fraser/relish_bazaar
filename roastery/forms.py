@@ -18,6 +18,7 @@ class PurchaseEnquiryForm(forms.Form):
             raise forms.ValidationError('Invalid contact number.')
         return contact_number
 
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -28,14 +29,14 @@ class ProductForm(forms.ModelForm):
 
     def clean_price(self):
         price = self.cleaned_data.get('price')
-        
         if price is not None:
             if price.as_tuple().exponent < -2:
-                raise forms.ValidationError("Ensure that the price has no more than 2 decimal places.")
+                raise forms.ValidationError("Ensure that the price has no more"
+                                            " than 2 decimal places.")
 
             if price <= 0:
                 raise forms.ValidationError('Price must be a positive number.')
-            
+
             if price > 90:
                 raise forms.ValidationError('Price cannot exceed 90.')
 

@@ -134,7 +134,6 @@ CURRENCY_SYMBOLS = (
 )
 
 
-
 class Category(models.Model):
     category_id = models.BigAutoField(primary_key=True)
     main_category = models.CharField(max_length=100)
