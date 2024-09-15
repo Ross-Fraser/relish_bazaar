@@ -2,11 +2,11 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django import forms  # Import the forms module from Django
 import os
-from .forms import EnquiryForm, ProductForm
+from .forms import PurchaseEnquiryForm, ProductForm
 from .models import Product, GRIND_CHOICES, Category, CoffeeOrigin, CoffeeGrind, CoffeeSize
 
 
-class EnquiryFormTest(TestCase):
+class PurchaseEnquiryFormTest(TestCase):
 
     def test_valid_form(self):
         form_data = {
@@ -18,7 +18,7 @@ class EnquiryFormTest(TestCase):
             'email_address': 'john.doe@example.com',
             'grind': GRIND_CHOICES[0][0]
         }
-        form = EnquiryForm(data=form_data)
+        form = PurchaseEnquiryForm(data=form_data)
         if not form.is_valid():
             print(form.errors)
         self.assertTrue(form.is_valid())
@@ -33,7 +33,7 @@ class EnquiryFormTest(TestCase):
             'email_address': 'john.doe@example.com',
             'grind': GRIND_CHOICES[0][0]
         }
-        form = EnquiryForm(data=form_data)
+        form = PurchaseEnquiryForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('contact_number', form.errors)
 
@@ -44,7 +44,7 @@ class EnquiryFormTest(TestCase):
             'name': 'John Doe',
             # Missing address, contact_number, email_address, and grind
         }
-        form = EnquiryForm(data=form_data)
+        form = PurchaseEnquiryForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('address', form.errors)
         self.assertIn('contact_number', form.errors)
