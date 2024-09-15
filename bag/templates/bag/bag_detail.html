@@ -23,7 +23,7 @@
             <td>{{ item.quantity }}</td>
             <td>£{{ item.get_total_price }}</td>
             <td>
-                <form method="post" action="{% url 'bag:update_bag_item' item.id item.quantity %}">
+                <form method="post" action="{% url 'bag:update_bag_item' item.id %}">
                     {% csrf_token %}
                     <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
