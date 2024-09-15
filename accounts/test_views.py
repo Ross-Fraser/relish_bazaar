@@ -2,8 +2,6 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from .forms import SignUpForm
-
 
 class RegisterViewTestCase(TestCase):
     def setUp(self):

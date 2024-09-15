@@ -93,7 +93,9 @@ All Python code was validated against the PEP8 style guide to maintain readabili
 
 ## HTML Validator
 
-The HTML code was validated using the W3C HTML Validator to ensure it meets web standards and is free from errors. This validation helps in maintaining cross-browser compatibility and accessibility.
+The HTML code was validated using the W3C HTML Validator to ensure it meets web standards but has one error.
+
+- The Ethiopian paragraph is doubled up on open and close tags <p> </p>, but when I check the admin panel and click on code view they are not doubled up.
 
 #### Testing Screenshots
 
