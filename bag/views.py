@@ -7,7 +7,7 @@ from roastery.models import Product
 def bag_detail(request):
     bag_items = BagItem.objects.filter(user=request.user)
     total_price = sum(item.get_total_price() for item in bag_items)
-    return render(request, 'bag/bag_detail.html', {'bag_items': bag_items, 'total_price': total_price})
+    return render(request, 'bag_detail.html', {'bag_items': bag_items, 'total_price': total_price})
 
 @login_required
 def add_to_bag(request, product_id):
