@@ -88,6 +88,15 @@
                         <a href="#loginRegisterOptions" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-user"></i>
                         </a>
+
+                        <!-- Bag icon -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bag:bag_detail' %}">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge bg-danger">{{ bag_items_count }}</span>
+                        </a>
+                    </li>
+
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" data-bs-popper="none" style="top:80%">
                             <li><a href="{% url 'login' %}" class="dropdown-item">Login</a></li>
                             <li><a href="{% url 'register' %}" class="dropdown-item">Register</a></li>

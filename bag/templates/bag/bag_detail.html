@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumbs%}
+<li><a href="{% url 'home' %}" class="breadcrumbs-link">Home</a></li>
+<li><a href="{% url 'products' %}" class="breadcrumbs-link">Products</a></li>
+<li class="active">Shopping Bag</li>
+{% endblock %}
+
+{% block content %}
+<h1>Your Shopping Bag</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in bag_items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>£{{ item.get_total_price }}</td>
+            <td>
+                <form method="post" action="{% url 'bag:update_bag_item' item.id item.quantity %}">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                </form>
+                <form method="post" action="{% url 'bag:remove_from_bag' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Your bag is empty.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Total: £{{ total_price }}</h3>
+<a href="{% url 'checkout:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+{% endblock %}
