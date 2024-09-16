@@ -43,5 +43,7 @@
 </table>
 
 <h3>Total: £{{ total_price }}</h3>
-<a href="" class="btn btn-success">Proceed to Checkout</a>
+<form action="{% url 'checkout:create_checkout_session' %}" method="get">
+    <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+</form>
 {% endblock %}
