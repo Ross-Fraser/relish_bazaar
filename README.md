@@ -1,5 +1,9 @@
 ![home_screen](staticfiles/images/screenshots/home_screen.webp)
 
+# Note:
+
+I duplicated the Relish Bazaar project (P4) because I intended to add my P5 (purchase feature) as a branch. However, since I didn't pass P4 and needed to make changes, I couldn't wait for the results before incorporating P5.
+
 # Relish Bazaar - Coffee Shop Website
 
 Welcome to Relish Bazaar, your ultimate online coffee shop experience! This project aims to create an interactive and user-friendly website for our coffee shop, providing customers with an easy way to browse and make enquires.
@@ -37,9 +41,8 @@ Ensure the website is accessible to users with disabilities, following accessibi
 
 ## Design Process
 
-Entity-Relationship Diagrams (ERD)
-
 ![entity-relationship_diagram](staticfiles/images/screenshots/entity-relationship_diagram.webp)
+figure1 - Entity-Relationship Diagrams (ERD)
 
 Entity-Relationship Diagrams (ERDs) played a crucial role in the design process of Relish Bazaar. ERDs help in visualizing the database structure, showing how entities such as Categories, Coffee Origin, Coffee Grind, Coffee size, products and how they  relate to each other. This design step ensures a well-organized database, improving data integrity and efficiency.
 
@@ -58,10 +61,19 @@ User stories were essential in guiding the development process, ensuring that th
 ### Screenshots
 
 ![main screen](staticfiles/images/screenshots/home_screen.webp)
+figure 2 - Main Screen
+
 ![product_detail](staticfiles/images/screenshots/product_detail.webp)
+figure 3 - Product Detail Page
+
 ![purchase_form](staticfiles/images/screenshots/purchase_form.webp)
+figure 4 - Purchase Form
+
 ![register_form](staticfiles/images/screenshots/register_form.webp)
+figure 5 - Register Form
+
 ![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
+figure 6 - CRUD Menu
 
 ### 2. Responsive Design
 
@@ -98,14 +110,18 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 - The Ethiopian paragraph is doubled up on open and close tags <p> </p>, but when I check the admin panel and click on code view they are not doubled up.
 
-#### Testing Screenshots
+#### Lighthouse Tests
+
 
 ![lighthouse_mobile](staticfiles/images/screenshots/lighthouse_mobile.webp)
+figure 7 - Lighthouse Mobile Test
+
 ![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.webp)
+figure 8 - Lighthouse Desktop Test
 
 ## Bugs
 
-The are no bugs in the system.
+There are no bugs in the system.
 
 # Getting Started
 
@@ -147,7 +163,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ## Credit
 
-Code Institute for template
-Code Institute for the deployment terminal.
-PEP8 Validator for code validation.
-3wSchools.com for breadcrumbs and permissions
+- Code Institute for template
+- Code Institute for the deployment terminal.
+- PEP8 Validator for code validation.
+- 3wSchools.com for breadcrumbs and permissions
