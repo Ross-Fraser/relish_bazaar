@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 
+handler404 = 'roastery.views.custom_page_not_found'
+handler403 = 'roastery.views.custom_permission_denied_view'
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -11,4 +13,5 @@ urlpatterns = [
     path("roastery/", include("roastery.urls")),
     path("", include("roastery.urls")),
     path("bag/", include("bag.urls")),
+    
 ]
