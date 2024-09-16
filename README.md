@@ -75,6 +75,12 @@ figure 5 - Register Form
 ![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
 figure 6 - CRUD Menu
 
+![bag_page](staticfiles/images/screenshots/bag_page.png)
+figure 7 - Bag Page
+
+![facebook_page](staticfiles/images/screenshots/facebook_page.png)
+figure 8 - Facebook Page
+
 ### 2. Responsive Design
 
 Create a responsive and visually appealing user interface that works seamlessly on various devices, including desktops, tablets, and mobile phones. Prioritize a user-friendly experience with clear instructions and intuitive controls.
@@ -114,16 +120,16 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 
 ![lighthouse_mobile](staticfiles/images/screenshots/lighthouse_mobile.webp)
-figure 7 - Lighthouse Mobile Test
+figure 9 - Lighthouse Mobile Test
 
 ![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.webp)
-figure 8 - Lighthouse Desktop Test
+figure 10 - Lighthouse Desktop Test
 
 ## Bugs
 
 There are no bugs in the system.
 
-# Getting Started
+# Deployment
 
 ## Prerequisites
 
