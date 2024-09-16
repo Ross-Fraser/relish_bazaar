@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'roastery',
     'accounts',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'accounts', 'templates', 'registration'),
             os.path.join(BASE_DIR, 'roastery', 'templates', 'roastery'),
             os.path.join(BASE_DIR, 'bag', 'templates', 'bag'),
+            os.path.join(BASE_DIR, 'checkout', 'templates', 'checkout'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -94,6 +96,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bag.context_processors.bag_items_count',
+                'checkout.context_processors.stripe_public_key',
             ],
         },
     },
@@ -144,6 +147,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Stripe
+STRIPE_PUBLIC_KEY = os.getenv("your-public-key")
+STRIPE_SECRET_KEY = os.getenv("your-secret-key")
 
 
 # Internationalization

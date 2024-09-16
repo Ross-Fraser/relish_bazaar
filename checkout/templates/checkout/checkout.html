@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li class="active">Checkout</li>
+{% endblock %}
+
+{% block content %}
+<h1>Checkout</h1>
+<p>Proceed to make your payment:</p>
+<button id="checkout-button" class="btn btn-primary">Checkout</button>
+
+<script src="{% static 'js/javascript.js' %}"></script>
+{% endblock %}
