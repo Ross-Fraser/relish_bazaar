@@ -110,8 +110,7 @@ class ProductViewTests(TestCase):
                                     args=[self.product.product_id]))
         self.assertRedirects(
             response,
-            f'{reverse("login")}?next={reverse("delete_product",
-            args=[self.product.product_id])}')
+            f'{reverse("login")}?next={reverse("delete_product", args=[self.product.product_id])}')
 
     def test_product_list_view(self):
         response = self.client.get(reverse('products_list'))
