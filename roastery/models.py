@@ -158,9 +158,11 @@ class CoffeeOrigin(models.Model):
         return dict(REGION_CHOICES).get(self.region)
 
     def __str__(self):
-        return f"{self.get_continent_display()},"
-        f"{self.get_country_display()},"
+        return (
+        f"{self.get_continent_display()}, "
+        f"{self.get_country_display()}, "
         f"{self.get_region_display()}"
+    )
 
 
 class CoffeeGrind(models.Model):
