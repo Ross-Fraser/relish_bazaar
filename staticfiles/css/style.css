@@ -41,6 +41,7 @@
 .breadcrumbs-link {
     color: #FFFFFF;
     text-decoration: none;
+    margin-right: 2px;
 }
 
 .breadcrumbs-link:hover {
