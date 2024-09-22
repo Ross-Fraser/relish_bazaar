@@ -332,4 +332,51 @@ The `SignUpFormTest` class contains unit tests for the `SignUpForm` used in user
 **Actual Result:**
 - The response redirects to 'manage_products' with the success message: "Product updated successfully!"
 
+## Button Tests
+
+### 1. Button Click to Create Product
+
+**Step:**
+- Click the "Create Product" button on the manage products page.
+
+**Expected Result:**
+- The user should be redirected to the product creation form page.
+
+**Actual Result:**
+- The user is redirected to the product creation form page successfully.
+
+### 2. Button Click to Delete Product
+
+**Step:**
+- Click the "Delete" button for a specific product in the product list.
+
+**Expected Result:**
+- A confirmation dialog should appear, asking if the user is sure they want to delete the product.
+
+**Actual Result:**
+- A confirmation dialog appears as expected.
+
+
+### 3. Button Click to Update Product
+
+**Step:**
+- Click the "Update" button next to a specific product in the product list.
+
+**Expected Result:**
+- The user should be redirected to the product update form page for the selected product.
+
+**Actual Result:**
+- The user is redirected to the product update form page successfully.
+
+### 4. Button Click to Submit Product Form
+
+**Step:**
+- Fill in the product form and click the "Submit" button.
+
+**Expected Result:**
+- The user should see a success message indicating the product was created successfully, and they should be redirected to the product list page.
+
+**Actual Result:**
+- A success message is displayed, and the user is redirected to the product list page as expected.
+
 

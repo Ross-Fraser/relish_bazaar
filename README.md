@@ -1,4 +1,5 @@
 ![home_screen](staticfiles/images/screenshots/home_screen.webp)
+figure 1 - Home screen
 
 # Relish Bazaar - Coffee Shop Website
 
@@ -37,18 +38,33 @@ Ensure the website is accessible to users with disabilities, following accessibi
 
 ## Design Process
 
-Entity-Relationship Diagrams (ERD)
+### 1. Requirements Gathering
+
+The initial step involved identifying user needs and functionality requirements for the relish-bazaar application. This included:
+
+User registration and authentication
+Product management (CRUD operations)
+Category and coffee origin selection
+Image upload and display
+Price and currency handling
+
+
+### 2. Entity Relationship Diagram (ERD)
+
+To visualize the data structure and relationships between various entities in the application, an Entity Relationship Diagram was created. The primary entities include:
+
+Product: Represents coffee products, including details like name, description, price, currency, and associated images.
+Category: Represents different categories of products.
+CoffeeOrigin: Represents the origin of the coffee beans.
+CoffeeGrind: Represents the grind types available for products.
+CoffeeSize: Represents different sizes available for products.
+ERD Diagram
 
 ![entity-relationship_diagram](staticfiles/images/screenshots/entity-relationship_diagram.webp)
+figure 2 - Entity-Relationship Diagrams (ERD)
 
-Entity-Relationship Diagrams (ERDs) played a crucial role in the design process of Relish Bazaar. ERDs help in visualizing the database structure, showing how entities such as Categories, Coffee Origin, Coffee Grind, Coffee size, products and how they  relate to each other. This design step ensures a well-organized database, improving data integrity and efficiency.
-
-Key Entities include:
-
-Category: Groups coffee into categories like "Arabica", "Robusta".
-CoffeeOrigin: Specifies the origin of the coffee beans used in the menu items, such as "Colombia", "Ethiopia", or "Brazil".
-CoffeeGrind: Defines the grind level of the coffee, such as "Whole Bean", "Course", "Medium", "Fine".
-CoffeeSize: Details the available sizes for coffee bags, currently "250g".
+3. Wireframes
+Wireframes were designed to outline the user interface and user experience. They serve as blueprints for the layout and functionality of key pages within the application.
 
 ## User Stories
 
@@ -58,14 +74,33 @@ User stories were essential in guiding the development process, ensuring that th
 ### Screenshots
 
 ![main screen](staticfiles/images/screenshots/home_screen.webp)
+figure 3 - Main screen
+
 ![product_detail](staticfiles/images/screenshots/product_detail.webp)
+figure 4 - product detail page
+
 ![purchase_form](staticfiles/images/screenshots/purchase_form.webp)
+figure 5 - purchase form
+
 ![register_form](staticfiles/images/screenshots/register_form.webp)
+figure 6 - register form
+
 ![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
+figure 7 - crud menu
 
 ### 2. Responsive Design
 
-Create a responsive and visually appealing user interface that works seamlessly on various devices, including desktops, tablets, and mobile phones. Prioritize a user-friendly experience with clear instructions and intuitive controls.
+#### Overview
+
+Responsive design is a crucial aspect of the relish-bazaar application, ensuring that users have a seamless experience across various devices, including desktops, tablets, and smartphones. The design adapts fluidly to different screen sizes and orientations, enhancing usability and accessibility.
+
+Key Principles
+
+- Fluid Grids: The layout is constructed using a fluid grid system, allowing elements to resize proportionally based on the screen width. This approach ensures that content is well-distributed and easy to navigate on all devices.
+
+- Flexible Images: Images within the application are designed to be responsive, utilizing CSS properties such as max-width: 100%; and height: auto;. This ensures that images resize appropriately without losing their aspect ratio, providing a visually appealing experience.
+
+- Media Queries: CSS media queries are employed to apply different styles based on device characteristics, such as width and resolution. This allows for adjustments in layout, font sizes, and element visibility for optimal presentation on various devices.
 
 ### 4. Stylish UI/UX
 
@@ -100,14 +135,20 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 #### Testing Screenshots
 
-![lighthouse_mobile](staticfiles/images/screenshots/lighthouse_mobile.webp)
-![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.webp)
+![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.png)
+figure 8 - Home screen lighthouse test
+
+![lighthouse_product_detail_desktop](staticfiles/images/screenshots/lighthouse_product_detail_desktop.png)
+figure 9 - product detail lighthouse test
+
+![lighthouse_purchase_enquiry_desktop](staticfiles/images/screenshots/lighthouse_purchase_enquiry_desktop.png)
+figure 10 - purchase enquiry lighthouse test
 
 ## Bugs
 
-The are no bugs in the system.
+There are no bugs in the system.
 
-# Getting Started
+# Deployment
 
 ## Prerequisites
 
@@ -115,19 +156,22 @@ Python 3.x
 Django
 A web browser for testing
 
-## Installation
+## Deployment steps
 
-Clone the repository:
+Clone the repository: git clone https://github.com/Ross-Fraser/relish-bazaar.git
 
-git clone https://github.com/Ross-Fraser/relish-bazaar.git
+Navigate to the project directory: cd relish-bazaar
 
-Navigate to the project directory:
+Install the required dependencies: pip install -r requirements.txt
 
-cd relish-bazaar
+Configured environment variables.
 
-Install the required dependencies:
+Ran migrations.
 
-pip install -r requirements.txt
+Collected static files.
+
+deploy to heroku
+
 
 ## Usage
 
