@@ -102,7 +102,7 @@ class ProductViewTests(TestCase):
         # Ensure it redirects to the correct URL
         self.assertRedirects(response, f'{reverse("manage_products")}?'
                                        f'success_message=Product'
-                                       f'deleted successfully!')
+                                       f' deleted successfully!')
 
     def test_delete_product_view_without_login(self):
         self.client.logout()
