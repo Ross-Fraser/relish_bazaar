@@ -24,18 +24,18 @@ class ProductViewTests(TestCase):
             category_id=0,
             main_category="Test Category"
         )
-        self.origin_id = CoffeeOrigin.objects.create(continent="0",
+        self.origin = CoffeeOrigin.objects.create(continent="0",
                                                      country="1",
                                                      region="1")
-        self.grind_id = CoffeeGrind.objects.create(grind="3")
-        self.size_id = CoffeeSize.objects.create(size="200", unit="Test Unit")
+        self.grind = CoffeeGrind.objects.create(grind="3")
+        self.size = CoffeeSize.objects.create(size="200", unit="Test Unit")
         self.product = Product.objects.create(
-            product_id=10,
+            product=10,
             category=self.category,
-            origin_id=self.origin_id,
-            grind_id=self.grind_id,
-            size_id=self.size_id,
-            manufacturer='Acme Corp',
+            origin=self.origin,
+            grind=self.grind,
+            size=self.size,
+            manufacturer='Relish',
             name='Premium Coffee',
             description='The best coffee in town.',
             price=Decimal('7.54'),
@@ -54,13 +54,13 @@ class ProductViewTests(TestCase):
         form_data = {
             "product_id": 2,
             "category": 1,
-            "origin_id": 1,
-            "grind_id": 2,
-            "size_id": 0,
-            "manufacturer": "Acme Corp",
+            "origin": 1,
+            "grind": 2,
+            "size": 0,
+            "manufacturer": "Relish",
             "name": "Premium Coffee",
             "description": "The best coffee in town.",
-            "price": Decimal("7.54"),
+            "price": Decimal("-7.54"),
             "currency": "GBP",
             "image": ""
         }
@@ -82,8 +82,8 @@ class ProductViewTests(TestCase):
             "price": Decimal("10.99"),
         }
         # Ensure the product exists before updating
-        self.assertTrue(Product.objects.filter
-                        (product_id=self.product.product_id).exists())
+        self.assertTrue(Product.objects.filter(
+            product_id=self.product.product_id).exists())
         response = self.client.post(reverse('update_product',
                                     kwargs={'product_id':
                                             self.product.product_id}),

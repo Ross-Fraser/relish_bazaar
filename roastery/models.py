@@ -189,13 +189,13 @@ class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
                                  related_name="products")
-    origin_id = models.ForeignKey(CoffeeOrigin, on_delete=models.CASCADE,
+    origin = models.ForeignKey(CoffeeOrigin, on_delete=models.CASCADE,
                                   null=True,
                                   related_name="products")
-    grind_id = models.ForeignKey(CoffeeGrind, on_delete=models.CASCADE,
+    grind = models.ForeignKey(CoffeeGrind, on_delete=models.CASCADE,
                                  null=True,
                                  related_name="products")
-    size_id = models.ForeignKey(CoffeeSize, on_delete=models.CASCADE,
+    size = models.ForeignKey(CoffeeSize, on_delete=models.CASCADE,
                                 null=True,
                                 related_name="products")
     manufacturer = models.CharField(max_length=100)
@@ -216,7 +216,7 @@ class Product(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
     description = models.TextField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=4, decimal_places=2)
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES,
                                 default='GBP')
     image = CloudinaryField('image')

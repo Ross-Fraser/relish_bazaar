@@ -53,7 +53,7 @@ def origin_products(request, continent_name=None):
     if continent_index is None:
         products = []
     else:
-        products = Product.objects.filter(origin_id__continent=continent_index)
+        products = Product.objects.filter(origin__continent=continent_index)
 
     return render(request, 'origin_products.html', {
         'products': products,
@@ -68,8 +68,8 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
-        'continent_name': product.origin_id.get_continent_display(),
-        'country_name': product.origin_id.get_country_display(),
+        'continent_name': product.origin.get_continent_display(),
+        'country_name': product.origin.get_country_display(),
         'currency_symbol': currency_symbol,
         'success_message': success_message,
     }
@@ -129,8 +129,8 @@ def purchase_form(request, product_id):
         context = {
             'form': form,
             'product': product,
-            'continent_name': product.origin_id.get_continent_display(),
-            'country_name': product.origin_id.get_country_display(),
+            'continent_name': product.origin.get_continent_display(),
+            'country_name': product.origin.get_country_display(),
         }
 
     return render(request, 'purchase_form.html', context)

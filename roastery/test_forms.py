@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django import forms  # Import the forms module from Django
@@ -56,11 +57,11 @@ class PurchaseEnquiryFormTest(TestCase):
 class ProductFormTest(TestCase):
 
     def setUp(self):
-        self.category = Category.objects.create(main_category='Beverage')
-        self.origin = CoffeeOrigin.objects.create(continent=0, country=0,
-                                                  region=0)
-        self.grind = CoffeeGrind.objects.create(grind=0)
-        self.size = CoffeeSize.objects.create(size=250, unit='g')
+        self.category = Category.objects.create(main_category='Arabica')
+        self.origin = CoffeeOrigin.objects.create(continent=0, country=1,
+                                                  region=1)
+        self.grind = CoffeeGrind.objects.create(grind=3)
+        self.size = CoffeeSize.objects.create(size=250, unit='Gramm')
 
     def test_valid_form_with_image(self):
         # Get the absolute path to the image file
@@ -78,14 +79,14 @@ class ProductFormTest(TestCase):
 
         # Populate form data including the image field with the temporary image
         form_data = {
-            'category': self.category.category_id,
-            'origin_id': self.origin.origin_id,
-            'grind_id': self.grind.grind_id,
-            'size_id': self.size.size_id,
-            'manufacturer': 'Acme Corp',
+            'category': self.category,
+            'origin': self.origin,
+            'grind': self.grind,
+            'size': self.size,
+            'manufacturer': 'Relish',
             'name': 'Premium Coffee',
             'description': 'The best coffee in town.',
-            'price': '20.00',
+            "price": Decimal("7.54"),
             'currency': 'USD',
         }
         form = ProductForm(data=form_data, files={'image': image_file})
@@ -104,14 +105,14 @@ class ProductFormTest(TestCase):
                                         content_type='image/webp')
 
         form_data = {
-            'category': self.category.category_id,
-            'origin_id': self.origin.origin_id,
-            'grind_id': self.grind.grind_id,
-            'size_id': self.size.size_id,
-            'manufacturer': 'Acme Corp',
+            'category': self.category,
+            'origin': self.origin,
+            'grind': self.grind,
+            'size': self.size,
+            'manufacturer': 'Relish',
             'name': 'Premium Coffee',
             'description': 'The best coffee in town.',
-            'price': 'invalid-price',
+            'price': Decimal('invalid-price'),
             'currency': 'USD',
         }
         form = ProductForm(data=form_data, files={'image': image_file})
@@ -120,15 +121,15 @@ class ProductFormTest(TestCase):
 
     def test_missing_required_fields(self):
         form_data = {
-            'category': self.category.category_id,
-            'origin_id': self.origin.origin_id,
-            # Missing grind_id, size_id, manufacturer, name, description,
+            'category': self.category,
+            'origin': self.origin,
+            # Missing grind, size, manufacturer, name, description,
             # price, currency, and image
         }
         form = ProductForm(data=form_data)
         self.assertFalse(form.is_valid())
-        self.assertIn('grind_id', form.errors)
-        self.assertIn('size_id', form.errors)
+        self.assertIn('grind', form.errors)
+        self.assertIn('size', form.errors)
         self.assertIn('manufacturer', form.errors)
         self.assertIn('name', form.errors)
         self.assertIn('description', form.errors)

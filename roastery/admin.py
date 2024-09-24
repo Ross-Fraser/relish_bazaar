@@ -10,7 +10,7 @@ class ProductAdmin(SummernoteModelAdmin):
     search_fields = ['name', 'description']
     summernote_fields = ('description',)
     prepopulated_fields = {'slug': ('name',)}
-    list_filter = ('category', 'origin_id', 'grind_id', 'size_id')
+    list_filter = ('category', 'origin', 'grind', 'size')
 
 
 # Register your models here.
