@@ -26,6 +26,10 @@
     text-align: center;
 }
 
+.crud btn {
+    color: blue;
+}
+
 /*---------------------------------------------------Breadcrumb*/
 .woocommerce-breadcrumb {
     font-size: 0.85rem;
