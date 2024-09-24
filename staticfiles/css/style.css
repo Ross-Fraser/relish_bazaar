@@ -19,7 +19,7 @@
 }
 
 .brand-name {
-    color: #F9FAFC;
+    color: yellow;
     font-family: 'Chantal Bold Italic', sans-serif;
     font-size: 60px;
     font-weight: bold;
@@ -31,7 +31,7 @@
     font-size: 0.85rem;
     text-align: center;
     margin-top: 5px;
-    color: #FFFFFF;
+    color: yellow;
 }
 
 .breadcrumb {
@@ -39,7 +39,7 @@
 }
 
 .breadcrumbs-link {
-    color: #FFFFFF;
+    color: yellow;
     text-decoration: none;
     margin-right: 2px;
 }
@@ -52,6 +52,7 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+    color: yellow
 }
 
 .dropdown-menu {
@@ -107,7 +108,7 @@ body {
 }
 
 .nav-link {
-    color: #FFFFFF !important;
+    color: yellow !important;
 }
 
 .text-muted {
@@ -116,7 +117,7 @@ body {
 
 .nav-button {
     padding: 10px 0px;
-    color: white;
+    color: yellow;
     text-decoration: none;
     border-radius: 5px;
     margin-left: auto;
@@ -130,6 +131,11 @@ body {
 
 .dark-bg {
     background-color: #1ABC9C;
+}
+
+.social {
+    background-color: blue !important;
+    color: blue !important;
 }
 
 .footer {
@@ -215,7 +221,7 @@ body {
 .invalid-feedback {
     display: block;
     color: #dc3545;
-    font-size: 0.875em; /* Adjust size as needed */
+    font-size: 0.875em;
 }
 
 .field-error {
@@ -317,7 +323,7 @@ body {
 
 .product-link {
     text-decoration: none;
-    color: #007bff;
+    color: yellow;
     flex: 1;
     margin-right: 10px;
 }
