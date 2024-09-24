@@ -3,6 +3,8 @@
 {% load custom_filters %}
 
 {% block breadcrumbs %}
+  <li><a href="{% url 'home' %}" 
+  class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
   <li><a href="{% url 'manage_products' %}" class="breadcrumbs-link">Manage Products</a>&nbsp;/&nbsp;</li>
   {% if form.instance.pk %}
     <li><a href="{% url 'update_product' product_id=form.instance.pk %}" class="breadcrumbs-link">Update Product</a></li>

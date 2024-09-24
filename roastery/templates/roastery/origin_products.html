@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block breadcrumbs %}
+<li><a href="{% url 'home' %}" 
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
 <li><a href="{% url 'origin_products' continent_name='continent_name' %}" class="breadcrumbs-link">{{ continent_name }} Coffee</a></li>
 {% endblock breadcrumbs %}
 

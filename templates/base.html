@@ -62,7 +62,6 @@
                 <!-- Breadcrumb navigation below the logo -->
                 <nav class="woocommerce-breadcrumb mt-2" aria-label="Breadcrumb">
                     <ol class="breadcrumb bg-white mb-0">
-                        <li class="breadcrumb-item"><a href="{% url 'home' %}" class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
                         {% block breadcrumbs %}
                          <!-- Content Goes here -->
                         {% endblock breadcrumbs %}
@@ -89,7 +88,7 @@
                         <a href="#loginRegisterOptions" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-user">User</i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" data-bs-popper="none" style="top:80%">
+                        <ul class="dropdown-menu dropdown-menu-end" id="#loginRegisterOptions" aria-labelledby="navbarDropdown" data-bs-popper="none" style="top:80%">
                             <li><a href="{% url 'login' %}" class="dropdown-item">Login</a></li>
                             <li><a href="{% url 'register' %}" class="dropdown-item">Register</a></li>
                         </ul>

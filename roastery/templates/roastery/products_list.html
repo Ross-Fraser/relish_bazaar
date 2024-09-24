@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block breadcrumbs %}
-  <a href="{% url 'manage_products' %}"class="breadcrumbs-link">Manage Products</a>&nbsp;&nbsp;
+<li><a href="{% url 'home' %}" 
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'manage_products' %}"class="breadcrumbs-link">Manage Products</a>&nbsp;&nbsp;</li>
 {% endblock breadcrumbs %}
 
 {% block content %}

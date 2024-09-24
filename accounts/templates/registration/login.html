@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}" 
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'login' %}" class="breadcrumbs-link">Login</a></li>
+{% endblock breadcrumbs %}
+
 {% block content %}
 <div class="container-fluid">
     <div class="row">
