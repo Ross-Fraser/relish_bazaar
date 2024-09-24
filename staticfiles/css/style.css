@@ -19,7 +19,7 @@
 }
 
 .brand-name {
-    color: yellow;
+    color: blue;
     font-family: 'Chantal Bold Italic', sans-serif;
     font-size: 60px;
     font-weight: bold;
@@ -31,7 +31,7 @@
     font-size: 0.85rem;
     text-align: center;
     margin-top: 5px;
-    color: yellow;
+    color: blue;
 }
 
 .breadcrumb {
@@ -39,7 +39,7 @@
 }
 
 .breadcrumbs-link {
-    color: yellow;
+    color: blue;
     text-decoration: none;
     margin-right: 2px;
 }
@@ -52,7 +52,7 @@
     margin-left: auto;
     display: flex;
     align-items: center;
-    color: yellow
+    color: blue
 }
 
 .dropdown-menu {
@@ -108,7 +108,7 @@ body {
 }
 
 .nav-link {
-    color: yellow !important;
+    color: blue !important;
 }
 
 .text-muted {
@@ -117,7 +117,7 @@ body {
 
 .nav-button {
     padding: 10px 0px;
-    color: yellow;
+    color: blue;
     text-decoration: none;
     border-radius: 5px;
     margin-left: auto;
@@ -323,7 +323,7 @@ body {
 
 .product-link {
     text-decoration: none;
-    color: yellow;
+    color: blue;
     flex: 1;
     margin-right: 10px;
 }
